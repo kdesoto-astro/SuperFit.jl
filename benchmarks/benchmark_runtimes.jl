@@ -47,8 +47,8 @@ end
     
     params = SuperFit.generate_random_params()
     
-    output="../../stored_models/sim_" * string(npoints) * ".jls"
-    timing_file="../../stored_times/sim_" * string(npoints) * ".txt"
+    output=joinpath(parsed_args["output_dir"], "sim_" * string(npoints) * ".jls")
+    timing_file=joinpath(parsed_args["timing_dir"], "sim_" * string(npoints) * ".txt")
     open(timing_file, "w+") do tf
         write(tf, "")
     end
@@ -92,12 +92,12 @@ end
             required = true
             arg_type = Float64
             action = :store_arg
-        "--output_file"
+        "--output_dir"
             help = "Where to store trace output"
             required = true
             arg_type = String
             action = :store_arg
-        "--timing_file"
+        "--timing_dir"
             help = "Where to store time analysis"
             required = true
             arg_type = String
