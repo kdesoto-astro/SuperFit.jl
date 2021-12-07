@@ -1,5 +1,4 @@
-include("../src/SuperFit.jl")
-
+using SuperFit
 using Distributed
 using CSV, DataFrames
 using Turing, MCMCChains

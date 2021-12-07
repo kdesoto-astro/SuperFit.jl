@@ -1,6 +1,4 @@
-include("../src/SuperFit.jl")
-
-import .SuperFit
+using SuperFit
 using Turing, MCMCChains
 using StatsPlots
 using CSV, DataFrames

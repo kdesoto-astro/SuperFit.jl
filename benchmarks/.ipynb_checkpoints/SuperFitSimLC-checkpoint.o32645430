@@ -1,0 +1,27 @@
+Starting job SuperFitSimLC
+Tue Dec  7 16:25:05 EST 2021
+Job id: 32645430.torque01.util.production.int.aci.ics.psu.edu
+Nodefile: /var/spool/torque/aux//32645430.torque01.util.production.int.aci.ics.psu.edu
+Was assigned the following nodes
+comp-gc-0085
+comp-gc-0085
+comp-gc-0085
+comp-gc-0085
+Loading modules to provide Julia 1.6.0
+About to change into /storage/work/k/kmd6851/SuperFit/benchmarks
+About to start Julia specifying list of assigned nodes
+  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+ERROR: LoadError: UndefVarError: machine_specs not defined
+Stacktrace:
+ [1] main()
+   @ Main /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:202
+ [2] top-level scope
+   @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:212
+in expression starting at /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:212
+      From worker 2:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 3:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 5:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 4:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+Dict{String, Any}("gamma_1" => nothing, "tau_fall" => nothing, "walkers" => 6, "amplitude" => nothing, "tau_rise" => nothing, "sigma" => 0.1, "nsimulations" => 7, "force" => true, "gamma_switch" => nothing, "output_file" => "", "timing_file" => "", "gamma_2" => nothing, "iterations" => 5000, "algorithm" => "NUTS", "beta" => nothing, "npoints" => 100, "t_0" => nothing)
+Julia exited
+Tue Dec  7 16:26:36 EST 2021

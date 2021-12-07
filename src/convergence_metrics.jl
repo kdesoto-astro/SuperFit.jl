@@ -5,17 +5,17 @@ function check_rhat(traces, rhat_plot_arr)
     println(iteration, sumstats.rhat)
     rhat_plot_arr = vcat(rhat_plot_arr, transpose(Array{Float64}(sumstats.rhat)))
     rhat_vec = sumstats.rhat
-    if iteration > 20000
+    if iteration > 100000
         return true
     end
     """
     if iteration > 200000
         return true
     end
+    """
     if iteration < 10000
         return false
     end
-    """
     for rhat in rhat_vec
         if ismissing(rhat) || rhat > 1.05
             return false

@@ -66,21 +66,21 @@ function sample_or_load_trace(model,
     if !ispath(trace_file) || force
         #logging.info(f'Starting fit for {basename}')
         rhat_plot_arr = zeros(Float64, 1, length(DynamicPPL.syms(DynamicPPL.VarInfo(model))))
-        #mle_estimate = optimize(model, MAP(), Optim.Options(iterations=200_000, allow_f_increases=true))
+        mle_estimate = optimize(model, MAP(), Optim.Options(iterations=200_000, allow_f_increases=true))
         #println("MLE",mle_estimate.values.array)
         iteration_interval = iterations
         traces = Array{MCMCChains.Chains}(undef, walkers)
-        @suppress_err begin
-            Threads.@threads for i in 1:walkers
+        Threads.@threads for i in 1:walkers
+            @suppress_err begin
                 traces[i] = Turing.sample(model,
                     algorithm,
                     iteration_interval,
                     progress=false,
                     chain_type = MCMCChains.Chains,
                     save_state=true,
-                    discard_initial=0)
-                    #init_theta = choose_init_params(mle_estimate)
-                #)
+                    discard_initial=0,
+                    init_theta = choose_init_params(mle_estimate)
+                )
             end
         end
         while !check_rhat(traces, rhat_plot_arr)
@@ -100,8 +100,8 @@ function update_traces(old_traces, model, algorithm, num_iterations, num_walkers
     new_traces = Array{MCMCChains.Chains}(undef, num_walkers)
     samples = AbstractMCMC.chainsstack(old_traces)
     start_iter = range(samples)[end]+1
-    @suppress_err begin
-        Threads.@threads for i in 1:num_walkers
+    Threads.@threads for i in 1:num_walkers
+        @suppress_err begin
             temp_trace = Turing.sample(model,
                     algorithm,
                     num_iterations,

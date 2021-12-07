@@ -1,17 +1,19 @@
-include("../src/SuperFit.jl")
-using .SuperFit
-
 using Distributed
-using CSV, DataFrames
-using Turing, MCMCChains
-using Plots, DataFrames
-using LinearAlgebra, PDMats
-using Distributions
-using Random
-using Formatting, ArgParse
-using Optim
-import AbstractMCMC
-import StatsBase
+@everywhere import Pkg
+@everywhere Pkg.offline(true)
+@everywhere Pkg.activate("..")
+
+@everywhere using SuperFit
+@everywhere using CSV, DataFrames
+@everywhere using Turing, MCMCChains
+@everywhere using Plots, DataFrames
+@everywhere using LinearAlgebra, PDMats
+@everywhere using Distributions
+@everywhere using Random
+@everywhere using Formatting, ArgParse
+@everywhere using Optim
+@everywhere import AbstractMCMC
+@everywhere import StatsBase
 
 const PHASE_MIN = 58058.
 const PHASE_MAX = 59528.
@@ -20,17 +22,18 @@ const WALKERS = 6
 const FILTERS = ["r", "g"]
 const ZEROPOINT_MAG = 22.
 
-function generate_and_fit_lightcurve(num_times, sigma, trace_file;
+@everywhere function generate_and_fit_lightcurve(num_times, sigma, trace_file;
         params=generate_random_params(), force=false, algorithm=NUTS(), iterations=ITERATIONS, walkers=WALKERS)
     println(num_times)
     times, fluxes_w_noise, noise_arr = SuperFit.generate_lightcurve_from_params(num_times, params, sigma)
     model = SuperFit.setup_model(times, fluxes_w_noise, noise_arr)
-    SuperFit.sample_or_load_trace(model, trace_file,
+    time = @elapsed SuperFit.sample_or_load_trace(model, trace_file,
         force=force, algorithm=algorithm,
         iterations=iterations, walkers=walkers)
+    return time
 end
 
-function alg_name_to_algorithm(name)
+@everywhere function alg_name_to_algorithm(name)
     if name == "NUTS"
         return NUTS()
     elseif name == "MH"
@@ -40,7 +43,7 @@ function alg_name_to_algorithm(name)
     end
 end
 
-function main()
+@everywhere function main()
     s = ArgParseSettings()
     @add_arg_table s begin
         "-n", "--npoints"
@@ -147,7 +150,7 @@ function main()
     """
     params = SuperFit.generate_random_params()
     
-    generate_and_fit_lightcurve(
+    runtime = generate_and_fit_lightcurve(
         parsed_args["npoints"],
         parsed_args["sigma"],
         parsed_args["output_file"],
@@ -156,6 +159,7 @@ function main()
         algorithm=alg_name_to_algorithm(parsed_args["algorithm"]),
         iterations=parsed_args["iterations"],
         walkers=parsed_args["walkers"])
+    println(runtime)
         
 end
 
