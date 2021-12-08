@@ -1,4 +1,19 @@
+import Pkg
+Pkg.instantiate()
+Pkg.precompile()
+
 using Distributed
+
+println("Number of workers before: " * string(nworkers()))
+println("Number of threads before: " * string(Threads.nthreads()))
+println("Number of procs before: " * string(nprocs()))
+    
+machinefilename = ENV["PBS_NODEFILE"]
+machinespecs = readlines( machinefilename )
+threads_per_process = 2
+num_processors = length(machinespecs[1:threads_per_process:end])
+addprocs(machinespecs[1:threads_per_process:end], exeflags="-t 2")
+
 @everywhere import Pkg
 @everywhere Pkg.offline(true)
 @everywhere Pkg.activate("..")
@@ -44,7 +59,7 @@ end
 end
 
 @everywhere function do_parallelism(npoints, parsed_args)
-    
+    println(npoints)
     params = SuperFit.generate_random_params()
     
     output=joinpath(parsed_args["output_dir"], "sim_" * string(npoints) * ".jls")
@@ -196,17 +211,12 @@ end
     parsed_args = parse_args(ARGS, s)
     println(parsed_args)
     
-    machinefilename = ENV["PBS_NODEFILE"]
-    machinespecs = readlines( machinefilename )
-    threads_per_process = 2
-    num_processors = length(machinespecs[1:threads_per_process:end]) - 1
-    addprocs(num_processors, exeflags="-t 2")
     println("Number of workers: " * string(nworkers()))
     println("Number of threads: " * string(Threads.nthreads()))
     println("Number of procs: " * string(nprocs()))
-    npoint_arr = 10:10:100
+    npoint_arr = collect(10:10:100)
     println(npoint_arr)
-    pmap(x -> do_parallelism(x, parsed_args), collect(npoint_arr))
+    pmap(x -> do_parallelism(x, parsed_args), npoint_arr)
 end
 
 main()

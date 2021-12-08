@@ -37,7 +37,7 @@ cd $PBS_O_WORKDIR            # Change into directory where job was submitted fro
 echo "About to start Julia specifying list of assigned nodes"
 timing="../../stored_times"
 output="../../stored_models"
-julia --project=".." --machine-file $PBS_NODEFILE --threads 2 benchmark_runtimes.jl --timing_dir=$timing --npoints=100 --sigma=0.1 --output_dir=$output -f
+julia --project=".." benchmark_runtimes.jl --timing_dir=$timing --npoints=100 --sigma=0.1 --output_dir=$output -f
 
 echo "Julia exited"
 date
