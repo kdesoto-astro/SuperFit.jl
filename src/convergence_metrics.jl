@@ -1,23 +1,29 @@
 function check_rhat(traces, rhat_plot_arr)
+    
+    @assert length(traces) > 1 "Gelman-Rubin diagnostic only works for > 1 chains."
+    
+    min_iteration = 10000
+    max_iteration = 100000
+    rhat_threshold = 1.05
+    
     samples = AbstractMCMC.chainsstack(traces)
     iteration = range(samples)[end]
+    
+    @assert iteration > 0 "Cannot calculate summary statistics for empty traces."
+    
     sumstats = DataFrame(summarystats(samples))
-    println(iteration, sumstats.rhat)
+    #println(iteration, sumstats.rhat)
+    
     rhat_plot_arr = vcat(rhat_plot_arr, transpose(Array{Float64}(sumstats.rhat)))
     rhat_vec = sumstats.rhat
-    if iteration > 100000
+    if iteration > max_iteration
         return true
     end
-    """
-    if iteration > 200000
-        return true
-    end
-    """
-    if iteration < 10000
+    if iteration < min_iteration
         return false
     end
     for rhat in rhat_vec
-        if ismissing(rhat) || rhat > 1.05
+        if ismissing(rhat) || rhat > rhat_threshold
             return false
         end
     end
@@ -25,11 +31,12 @@ function check_rhat(traces, rhat_plot_arr)
 end
 
 function check_rhat_temp(traces)
+    
+    min_iterations = 5000
     samples = AbstractMCMC.chainsstack(traces)
-    CSV.write("combined_chains.csv", DataFrame(samples))
     iteration = range(samples)[end]
-    println(iteration)
-    if iteration > 5000
+    #println(iteration)
+    if iteration > min_iterations
         return true
     end
     return false
@@ -38,6 +45,10 @@ end
 function calc_rhat_from_array(traces)
     N = length(Array(traces[1]))
     M = length(traces) #number of parallel chains
+    
+    @assert M > 1 "Number of traces must be > 1"
+    @assert N > 0 "Length of traces must be positive"
+    
     W = 0.
     trace_means = []
     for trace in traces
@@ -50,8 +61,8 @@ function calc_rhat_from_array(traces)
     B = (N/(M-1)) * var(trace_means)
     V = (N-1)/N * W + (M+N)/(M*N) * B
     R = sqrt(V / W)
-    println(W)
-    println(B)
+    #println(W)
+    #println(B)
     println(string("Manual r-hat: ", R))
     return R
 end
