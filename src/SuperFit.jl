@@ -14,8 +14,9 @@ using Random
 using Formatting, ArgParse
 using Optim
 using Suppressor
-import AbstractMCMC
+using AbstractMCMC: AbstractModel
 import StatsBase
+using Logging
 
 include("defaults.jl")
 include("loguniform.jl")
@@ -26,4 +27,5 @@ include("convergence_metrics.jl")
 include("sample_multithread.jl")
 include("diagnostics.jl")
 
+#precompile(sample_or_load_trace, (AbstractModel, String))
 end

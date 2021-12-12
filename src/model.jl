@@ -1,4 +1,8 @@
 function flux_map(t, params)
+    
+    #No assertions because the model will skip illegal parameter choices anyways
+    #Don't want to interrupt or force/stop sampling by throwing in assertions
+    
     gamma = params.gamma_1 / ( 1. + exp(100. * (params.gamma_switch - 2. / 3.))) 
         + params.gamma_2 / ( 1. + exp(-100. * (params.gamma_switch - 2. / 3.)))
     phase = t - params.t_0
@@ -44,7 +48,7 @@ function setup_model(obs_time, obs_flux, obs_unc; max_flux=missing)
         sig = [convert(eltype(beta), s) for s in sig]
         exp_flux = [convert(eltype(beta), flux_map(time, params)) 
             for time in t]
-        sigma = sqrt.(sig .^ 2. .+ extra_sigma ^ 2.)
+        sigma = sqrt.(sig .^ 2 .+ extra_sigma ^ 2)
         f ~ MvNormal(exp_flux, sigma)
     end
     posterior = sn_model(obs_time, obs_flux, obs_unc)
