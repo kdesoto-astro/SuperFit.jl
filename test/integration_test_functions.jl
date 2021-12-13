@@ -1,8 +1,6 @@
 #module FitSNTestFunctions
 
-include("../src/SuperFit.jl")
-using .SuperFit
-
+using SuperFit
 using Test
 using Distributed
 using CSV, DataFrames
@@ -17,14 +15,14 @@ import AbstractMCMC
 import StatsBase
 using StatsPlots
 
-function test_simulated_data(num_times, A, beta, gamma_1, gamma_2, gamma_switch, t_0, tau_rise, tau_fall, noise)
-    times, fluxes_w_noise, noise_arr = SuperFit.generate_lightcurve_from_params(num_times, A, beta, gamma_1, gamma_2,
-        gamma_switch, t_0, tau_rise, tau_fall, sigma, with_noise=true)
+function test_simulated_data(num_times, params, noise)
+    times, fluxes_w_noise, noise_arr = SuperFit.generate_lightcurve_from_params(
+        num_times, params, noise, with_noise=true)
     
-    #outputfile = "../../stored_models/simulated"
-    model = setup_model(times, fluxes_w_noise, noise_arr)
+    outputfile = "tmp_trace.jls"
+    model = SuperFit.setup_model(times, fluxes_w_noise, noise_arr)
     
-    sample_or_load_trace(model, outputfile, force=true,
+    SuperFit.sample_or_load_trace(model, outputfile, force=true,
         algorithm=NUTS(), iterations=5000, walkers=3)
     
     ENV["GKSwstype"] = "100"
@@ -35,16 +33,16 @@ function test_simulated_data(num_times, A, beta, gamma_1, gamma_2, gamma_switch,
         single_chain = median(Array(trace[:,:,i]), dims=1)
         # checks all params except beta & gamma (can be quite unconstrained)
         
-        if (single_chain[1] - A) / A > 0.1
+        if (single_chain[1] - params.A) / params.A > 0.1
             test_passed = false
         end
-        if (single_chain[end - 3] - t_0) / t_0 > 0.1
+        if (single_chain[end - 3] - params.t_0) / params.t_0 > 0.1
             test_passed = false
         end
-        if (single_chain[end - 2] - tau_rise) / tau_rise > 0.1
+        if (single_chain[end - 2] - params.tau_rise) / params.tau_rise > 0.1
             test_passed = false
         end
-        if (single_chain[end - 1] - tau_fall) / tau_fall > 0.1
+        if (single_chain[end - 1] - params.tau_fall) / params.tau_fall > 0.1
             test_passed = false
         end
         """
@@ -56,6 +54,7 @@ function test_simulated_data(num_times, A, beta, gamma_1, gamma_2, gamma_switch,
         end
         """
     end
+    rm(outputfile)
     return test_passed
 end
 
