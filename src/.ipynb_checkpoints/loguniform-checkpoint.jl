@@ -4,6 +4,7 @@ struct LogUniform{T<:Real} <: ContinuousUnivariateDistribution
     LogUniform{T}(a::T, b::T) where {T <: Real} = new{T}(a, b)
 end
 
+#Will add back when I'm sure I'm supposed to include this
 """
 LogUniform(a::Real, b::Real) = LogUniform(promote(a, b)...)
 LogUniform(a::Integer, b::Integer) = LogUniform(float(a), float(b))
@@ -17,9 +18,7 @@ convert(::Type{LogUniform{T}}, d::LogUniform{S}) where {T<:Real, S<:Real} = LogU
 
 function LogUniform(a::T, b::T; check_args=true) where {T <: Real}
     #check_args && @check_args(LogUniform, a < b) && @check_args(LogUniform, a > 0) && @check_args(LogUniform, b > 0)
-    if b <= a || a <=0 || b <= 0
-        error("Invalid limits")
-    end
+    @assert (b > a && a > 0 && b > 0) "Invalid log-uniform distribution limits"
     return LogUniform{T}(a, b)
 end
 

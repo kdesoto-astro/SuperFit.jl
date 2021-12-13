@@ -1,0 +1,46 @@
+Starting job SuperFitSimLC
+Thu Dec  9 13:47:03 EST 2021
+Job id: 32720260.torque01.util.production.int.aci.ics.psu.edu
+Nodefile: /var/spool/torque/aux//32720260.torque01.util.production.int.aci.ics.psu.edu
+Was assigned the following nodes
+comp-bc-0377
+comp-bc-0377
+comp-bc-0377
+comp-bc-0376
+comp-bc-0376
+Loading modules to provide Julia 1.6.0
+About to change into /storage/work/k/kmd6851/SuperFit/benchmarks
+About to start Julia specifying list of assigned nodes
+ERROR: LoadError: SystemError: close: Stale file handle
+Stacktrace:
+  [1] systemerror(p::String, errno::Int32; extrainfo::Nothing)
+    @ Base ./error.jl:168
+  [2] #systemerror#62
+    @ ./error.jl:167 [inlined]
+  [3] systemerror
+    @ ./error.jl:167 [inlined]
+  [4] close
+    @ ./iostream.jl:63 [inlined]
+  [5] open(::Pkg.API.var"#242#243", ::String, ::Vararg{String, N} where N; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Base ./io.jl:332
+  [6] open
+    @ ./io.jl:328 [inlined]
+  [7] save_suspended_packages()
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:1237
+  [8] precompile(ctx::Pkg.Types.Context; internal_call::Bool, strict::Bool, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:1183
+  [9] _auto_precompile(ctx::Pkg.Types.Context)
+    @ Pkg /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Pkg.jl:591
+ [10] instantiate(ctx::Pkg.Types.Context; manifest::Nothing, update_registry::Bool, verbose::Bool, platform::Base.BinaryPlatforms.Platform, allow_autoprecomp::Bool, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:1308
+ [11] instantiate
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:1276 [inlined]
+ [12] #instantiate#246
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:1272 [inlined]
+ [13] instantiate()
+    @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:1272
+ [14] top-level scope
+    @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:3
+in expression starting at /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:3
+Julia exited
+Thu Dec  9 13:47:18 EST 2021

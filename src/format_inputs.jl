@@ -10,7 +10,7 @@ function generate_random_params()
     return (;A, beta, gamma_1, gamma_2, gamma_switch, t_0, tau_rise, tau_fall)
 end
 
-function generate_lightcurve_from_params(num_times::Int64, params, noise_frac::Int64; with_noise=true)
+function generate_lightcurve_from_params(num_times::Int64, params, noise_frac::Float64; with_noise=true)
     
     @assert num_times > 0 "Number of points for generated lightcurve must be > 0"
     @assert !with_noise || noise_frac >= 0 "Noise fraction of generated lightcurve must be non-negative."
@@ -117,7 +117,7 @@ function median_absolute_deviation(mags)
     MAD = Median(abs(mag - avg mag))
     """
     @assert length(mags) > 0 "mags array empty"
-    return Base.median(abs.(mags .- mean(mags)))
+    return median(abs.(mags .- mean(mags)))
 end
 
 function convert_mags_to_flux(obs, zp)

@@ -8,14 +8,8 @@ using Distributed
 println("Number of workers before: " * string(nworkers()))
 println("Number of threads before: " * string(Threads.nthreads()))
 println("Number of procs before: " * string(nprocs()))
-    
-machinefilename = ENV["PBS_NODEFILE"]
-machinespecs = readlines( machinefilename )
-#num_processors = length(machinespecs[1:threads_per_process:end])
-addprocs(machinespecs)
 
 @everywhere import Pkg
-#@everywhere Pkg.offline(true)
 @everywhere Pkg.UPDATED_REGISTRY_THIS_SESSION[] = true 
 @everywhere Pkg.activate("..")
 
@@ -216,8 +210,8 @@ end
     println("Number of procs: " * string(nprocs()))
     npoint_arr = collect(10:10:100)
     println(npoint_arr)
-    total_time = @elapsed @sync pmap(x -> do_parallelism(x, parsed_args), npoint_arr)
-    println(total_time)
+    do_parallelism(parsed_args["npoints"], parsed_args)
+    #pmap(x -> do_parallelism(x, parsed_args), npoint_arr)
 end
 
 main()

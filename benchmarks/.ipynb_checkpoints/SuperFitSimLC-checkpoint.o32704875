@@ -1,0 +1,81 @@
+Starting job SuperFitSimLC
+Thu Dec  9 01:35:07 EST 2021
+Job id: 32704875.torque01.util.production.int.aci.ics.psu.edu
+Nodefile: /var/spool/torque/aux//32704875.torque01.util.production.int.aci.ics.psu.edu
+Was assigned the following nodes
+comp-gc-0085
+comp-gc-0085
+comp-gc-0084
+comp-gc-0084
+Loading modules to provide Julia 1.6.0
+About to change into /storage/work/k/kmd6851/SuperFit/benchmarks
+About to start Julia specifying list of assigned nodes
+Precompiling project...
+[32m  ✓ [39mSuperFit
+1 dependency successfully precompiled in 40 seconds (225 already precompiled)
+  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+ERROR: LoadError: On worker 2:
+UndefVarError: Logging not defined
+Stacktrace:
+ [1] #sample_or_load_trace#11
+   @ /storage/work/k/kmd6851/SuperFit/src/sample_multithread.jl:63
+ [2] #generate_and_fit_lightcurve#1
+   @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:47
+ [3] macro expansion
+   @ ./timing.jl:287 [inlined]
+ [4] do_parallelism
+   @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:79
+ [5] #10
+   @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:221
+ [6] #106
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:278
+ [7] run_work_thunk
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:63
+ [8] macro expansion
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:278 [inlined]
+ [9] #105
+   @ ./task.jl:406
+Stacktrace:
+  [1] (::Base.var"#837#839")(x::Task)
+    @ Base ./asyncmap.jl:177
+  [2] foreach(f::Base.var"#837#839", itr::Vector{Any})
+    @ Base ./abstractarray.jl:2141
+  [3] maptwice(wrapped_f::Function, chnl::Channel{Any}, worker_tasks::Vector{Any}, c::Vector{Int64})
+    @ Base ./asyncmap.jl:177
+  [4] wrap_n_exec_twice
+    @ ./asyncmap.jl:153 [inlined]
+  [5] #async_usemap#822
+    @ ./asyncmap.jl:103 [inlined]
+  [6] #asyncmap#821
+    @ ./asyncmap.jl:81 [inlined]
+  [7] pmap(f::Function, p::WorkerPool, c::Vector{Int64}; distributed::Bool, batch_size::Int64, on_error::Nothing, retry_delays::Vector{Any}, retry_check::Nothing)
+    @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:126
+  [8] pmap(f::Function, p::WorkerPool, c::Vector{Int64})
+    @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:101
+  [9] pmap(f::Function, c::Vector{Int64}; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:156
+ [10] pmap
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:156 [inlined]
+ [11] main()
+    @ Main /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:221
+ [12] top-level scope
+    @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:224
+in expression starting at /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:224
+Number of workers before: 1
+Number of threads before: 1
+Number of procs before: 1
+      From worker 2:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 3:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+Dict{String, Any}("gamma_1" => nothing, "tau_fall" => nothing, "walkers" => 6, "output_dir" => "../../stored_models", "amplitude" => nothing, "timing_dir" => "../../stored_times", "tau_rise" => nothing, "sigma" => 0.1, "nsimulations" => 7, "force" => true, "gamma_switch" => nothing, "gamma_2" => nothing, "iterations" => 5000, "algorithm" => "NUTS", "beta" => nothing, "npoints" => 100, "t_0" => nothing)
+Number of workers: 2
+Number of threads: 1
+Number of procs: 3
+[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+      From worker 2:	10
+      From worker 3:	20
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+Julia exited
+Thu Dec  9 01:38:24 EST 2021

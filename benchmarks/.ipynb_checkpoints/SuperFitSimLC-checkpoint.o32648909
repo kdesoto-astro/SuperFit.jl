@@ -1,0 +1,142 @@
+Starting job SuperFitSimLC
+Tue Dec  7 18:44:32 EST 2021
+Job id: 32648909.torque01.util.production.int.aci.ics.psu.edu
+Nodefile: /var/spool/torque/aux//32648909.torque01.util.production.int.aci.ics.psu.edu
+Was assigned the following nodes
+comp-gc-0085
+comp-gc-0085
+comp-gc-0085
+comp-gc-0085
+Loading modules to provide Julia 1.6.0
+About to change into /storage/work/k/kmd6851/SuperFit/benchmarks
+About to start Julia specifying list of assigned nodes
+  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+ERROR: LoadError: On worker 2:
+TaskFailedException
+Stacktrace:
+  [1] wait
+    @ ./task.jl:317 [inlined]
+  [2] threading_run
+    @ ./threadingconstructs.jl:34
+  [3] macro expansion
+    @ ./threadingconstructs.jl:93 [inlined]
+  [4] #sample_or_load_trace#11
+    @ /storage/work/k/kmd6851/SuperFit/src/sample_multithread.jl:74
+  [5] macro expansion
+    @ ./timing.jl:287 [inlined]
+  [6] #generate_and_fit_lightcurve#1
+    @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:41
+  [7] do_parallelism
+    @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:73
+  [8] #10
+    @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:215
+  [9] #106
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:278
+ [10] run_work_thunk
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:63
+ [11] macro expansion
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:278 [inlined]
+ [12] #105
+    @ ./task.jl:406
+
+    nested task error: 
+Stacktrace:
+  [1] (::Base.var"#837#839")(x::Task)
+    @ Base ./asyncmap.jl:177
+  [2] foreach(f::Base.var"#837#839", itr::Vector{Any})
+    @ Base ./abstractarray.jl:2141
+  [3] maptwice(wrapped_f::Function, chnl::Channel{Any}, worker_tasks::Vector{Any}, c::Vector{Int64})
+    @ Base ./asyncmap.jl:177
+  [4] wrap_n_exec_twice
+    @ ./asyncmap.jl:153 [inlined]
+  [5] #async_usemap#822
+    @ ./asyncmap.jl:103 [inlined]
+  [6] #asyncmap#821
+    @ ./asyncmap.jl:81 [inlined]
+  [7] pmap(f::Function, p::WorkerPool, c::Vector{Int64}; distributed::Bool, batch_size::Int64, on_error::Nothing, retry_delays::Vector{Any}, retry_check::Nothing)
+    @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:126
+  [8] pmap(f::Function, p::WorkerPool, c::Vector{Int64})
+    @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:101
+  [9] pmap(f::Function, c::Vector{Int64}; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:156
+ [10] pmap
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:156 [inlined]
+ [11] main()
+    @ Main /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:215
+ [12] top-level scope
+    @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:218
+in expression starting at /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:218
+Number of workers before: 1
+Number of threads before: 1
+Number of procs before: 1
+      From worker 2:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 3:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+Dict{String, Any}("gamma_1" => nothing, "tau_fall" => nothing, "walkers" => 6, "output_dir" => "../../stored_models", "amplitude" => nothing, "timing_dir" => "../../stored_times", "tau_rise" => nothing, "sigma" => 0.1, "nsimulations" => 7, "force" => true, "gamma_switch" => nothing, "gamma_2" => nothing, "iterations" => 5000, "algorithm" => "NUTS", "beta" => nothing, "npoints" => 100, "t_0" => nothing)
+Number of workers: 2
+Number of threads: 1
+Number of procs: 3
+10:10:100
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	2
+      From worker 3:	20
+      From worker 2:	[3.595392150518908, 0.0013096929252509602, 4.999999999997475, 60.00000000003425, 0.9506921812602194, 59169.12640731987, 0.7368446209640502, 64.59220138994411, 4.081990428274891]
+      From worker 3:	SETTING UP MODEL
+      From worker 2:	[3.595392150518908, 0.0013096929252509602, 4.999999999997475, 60.00000000003425, 0.9506921812602194, 59169.12640731987, 0.7368446209640502, 64.59220138994411, 4.081990428274891]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[2.105568368196945, 0.0016379102223264142, 5.1374713812370345, 56.58460377998399, 0.8507843015227847, 59103.87696396202, 3.7568318643998593, 64.76643158214398, 4.44977965397049]
+      From worker 2:	init Any[1.0, 0.0005234807050842599, 5.019252143723843, 53.92677940609628, 0.8555771069998435, 59149.17045127439, 3.2001314548190667, 64.63156825701056, 4.55875128789668]
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	2
+      From worker 2:	[3.595392150518908, 0.0013096929252509602, 4.999999999997475, 60.00000000003425, 0.9506921812602194, 59169.12640731987, 0.7368446209640502, 64.59220138994411, 4.081990428274891]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[1.0, 0.0014104750280585655, 4.857572293618794, 62.86802955718589, 0.8510418833777935, 59205.009087772596, 0.01, 72.7398653139232, 3.6339940957078056]
+      From worker 3:	[26.146639867090606, 5.562684646269e-311, 4.793348210570338, 60.00070648750704, 0.5453568137220348, 58844.24426079999, 24.728029671193116, 258.34020066446385, 0.001]
+      From worker 3:	[26.146639867090606, 5.562684646269e-311, 4.793348210570338, 60.00070648750704, 0.5453568137220348, 58844.24426079999, 24.728029671193116, 258.34020066446385, 0.001]
+      From worker 3:	init Any[14.102504700170629, 0.0, 6.176195318786781, 67.03218579569902, 0.0, 58831.651464076014, 50.0, 223.56036393112606, 0.0]
+      From worker 3:	init Any[22.94815491619748, 0.0, 4.7177539994893225, 63.59635245593964, 1.0, 58840.85439451205, 27.384549953052062, 183.69426515894872, 0.0]
+      From worker 2:	[3.595392150518908, 0.0013096929252509602, 4.999999999997475, 60.00000000003425, 0.9506921812602194, 59169.12640731987, 0.7368446209640502, 64.59220138994411, 4.081990428274891]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[34.11788384377566, 0.0021187313508340523, 5.736641443947824, 66.81929278854705, 0.9569623221287245, 59067.70866282273, 3.10216581249231, 55.52431584371654, 4.549356369420626]
+      From worker 3:	[26.146639867090606, 5.562684646269e-311, 4.793348210570338, 60.00070648750704, 0.5453568137220348, 58844.24426079999, 24.728029671193116, 258.34020066446385, 0.001]
+      From worker 3:	init Any[33.343532206084205, 0.0, 6.521375037417089, 50.52514689729967, 1.0, 58856.385008108366, 16.741835800037897, 300.0, 0.009227813354549912]
+      From worker 3:	[26.146639867090606, 5.562684646269e-311, 4.793348210570338, 60.00070648750704, 0.5453568137220348, 58844.24426079999, 24.728029671193116, 258.34020066446385, 0.001]
+      From worker 3:	init Any[24.590484718578885, 0.0, 8.197372195496218, 60.79797757815445, 0.10434011346281546, 58847.961168346344, 45.02612345510278, 273.60396728701875, 0.03347066274348897]
+      From worker 3:	[26.146639867090606, 5.562684646269e-311, 4.793348210570338, 60.00070648750704, 0.5453568137220348, 58844.24426079999, 24.728029671193116, 258.34020066446385, 0.001]
+      From worker 3:	init Any[31.360944329168213, 0.01, 1.4094859221760863, 58.09167324210466, 1.0, 58860.64584328207, 6.382095136217924, 255.88955298521287, 0.003101958099849151]
+Julia exited
+Tue Dec  7 18:48:40 EST 2021

@@ -1,0 +1,33 @@
+Starting job SuperFitSimLC
+Wed Dec  8 18:39:58 EST 2021
+Job id: 32694304.torque01.util.production.int.aci.ics.psu.edu
+Nodefile: /var/spool/torque/aux//32694304.torque01.util.production.int.aci.ics.psu.edu
+Was assigned the following nodes
+comp-gc-0085
+comp-gc-0085
+comp-gc-0085
+comp-gc-0085
+Loading modules to provide Julia 1.6.0
+About to change into /storage/work/k/kmd6851/SuperFit/benchmarks
+About to start Julia specifying list of assigned nodes
+  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+ERROR: LoadError: ArgumentError: Package SuperFit [e6337bd4-ee96-4169-ac60-384789f26544] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+Stacktrace:
+ [1] _require(pkg::Base.PkgId)
+   @ Base ./loading.jl:990
+ [2] require(uuidkey::Base.PkgId)
+   @ Base ./loading.jl:914
+ [3] require(into::Module, mod::Symbol)
+   @ Base ./loading.jl:901
+ [4] top-level scope
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/macros.jl:204
+in expression starting at /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:21
+Number of workers before: 1
+Number of threads before: 1
+Number of procs before: 1
+      From worker 2:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 3:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+Julia exited
+Wed Dec  8 18:40:22 EST 2021

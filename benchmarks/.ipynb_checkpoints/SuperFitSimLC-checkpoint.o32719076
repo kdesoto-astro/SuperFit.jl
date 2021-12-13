@@ -1,0 +1,112 @@
+Starting job SuperFitSimLC
+Thu Dec  9 13:03:05 EST 2021
+Job id: 32719076.torque01.util.production.int.aci.ics.psu.edu
+Nodefile: /var/spool/torque/aux//32719076.torque01.util.production.int.aci.ics.psu.edu
+Was assigned the following nodes
+comp-bc-0381
+comp-bc-0381
+comp-bc-0381
+comp-bc-0381
+comp-bc-0381
+comp-bc-0378
+comp-bc-0378
+comp-bc-0378
+comp-bc-0378
+comp-bc-0378
+Loading modules to provide Julia 1.6.0
+About to change into /storage/work/k/kmd6851/SuperFit/benchmarks
+About to start Julia specifying list of assigned nodes
+Warning: Permanently added 'comp-bc-0378' (ECDSA) to the list of known hosts.
+
+signal (15): Terminated
+in expression starting at /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes_single.jl:224
+int64hash at /buildworker/worker/package_linux64/build/src/support/hashing.c:33
+bitmix at /buildworker/worker/package_linux64/build/src/support/hashing.h:31 [inlined]
+hash_svec at /buildworker/worker/package_linux64/build/src/builtins.c:248
+jl_object_id_ at /buildworker/worker/package_linux64/build/src/builtins.c:360
+jl_table_peek_bp at /buildworker/worker/package_linux64/build/src/iddict.c:119
+jl_eqtable_get at /buildworker/worker/package_linux64/build/src/iddict.c:161
+lookup_leafcache at /buildworker/worker/package_linux64/build/src/gf.c:975 [inlined]
+jl_lookup_generic_ at /buildworker/worker/package_linux64/build/src/gf.c:2355 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2415
+#6 at ./none:0
+iterate at ./generator.jl:47 [inlined]
+collect_to! at ./array.jl:724
+collect_to_with_first! at ./array.jl:702
+unknown function (ip: 0x2b57c5c7bfcb)
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+collect at ./array.jl:683
+sn_model at /storage/work/k/kmd6851/SuperFit/src/model.jl:44
+macro expansion at /storage/home/kmd6851/.julia/packages/DynamicPPL/RcfQU/src/model.jl:465 [inlined]
+_evaluate at /storage/home/kmd6851/.julia/packages/DynamicPPL/RcfQU/src/model.jl:448 [inlined]
+evaluate_threadunsafe at /storage/home/kmd6851/.julia/packages/DynamicPPL/RcfQU/src/model.jl:421 [inlined]
+Model at /storage/home/kmd6851/.julia/packages/DynamicPPL/RcfQU/src/model.jl:389
+Model at /storage/home/kmd6851/.julia/packages/DynamicPPL/RcfQU/src/model.jl:383 [inlined]
+Model at /storage/home/kmd6851/.julia/packages/DynamicPPL/RcfQU/src/model.jl:396 [inlined]
+f at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/core/ad.jl:111 [inlined]
+vector_mode_dual_eval! at /storage/home/kmd6851/.julia/packages/ForwardDiff/UDrkY/src/apiutils.jl:37 [inlined]
+vector_mode_gradient! at /storage/home/kmd6851/.julia/packages/ForwardDiff/UDrkY/src/gradient.jl:113
+gradient! at /storage/home/kmd6851/.julia/packages/ForwardDiff/UDrkY/src/gradient.jl:37 [inlined]
+gradient! at /storage/home/kmd6851/.julia/packages/ForwardDiff/UDrkY/src/gradient.jl:35
+unknown function (ip: 0x2b57c5c73609)
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+gradient_logp at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/core/ad.jl:121
+gradient_logp at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/core/ad.jl:83 [inlined]
+gradient_logp at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/core/ad.jl:83 [inlined]
+∂logπ∂θ at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/hmc.jl:433 [inlined]
+∂H∂θ at /storage/home/kmd6851/.julia/packages/AdvancedHMC/HQHnm/src/hamiltonian.jl:31 [inlined]
+macro expansion at /storage/home/kmd6851/.julia/packages/UnPack/EkESO/src/UnPack.jl:100 [inlined]
+#step#9 at /storage/home/kmd6851/.julia/packages/AdvancedHMC/HQHnm/src/integrator.jl:88
+step at /storage/home/kmd6851/.julia/packages/AdvancedHMC/HQHnm/src/integrator.jl:66 [inlined]
+build_tree at /storage/home/kmd6851/.julia/packages/AdvancedHMC/HQHnm/src/trajectory.jl:595
+build_tree at /storage/home/kmd6851/.julia/packages/AdvancedHMC/HQHnm/src/trajectory.jl:603
+unknown function (ip: 0x2b57c5c80ae0)
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+build_tree at /storage/home/kmd6851/.julia/packages/AdvancedHMC/HQHnm/src/trajectory.jl:612
+build_tree at /storage/home/kmd6851/.julia/packages/AdvancedHMC/HQHnm/src/trajectory.jl:603
+unknown function (ip: 0x2b57c5c80ae0)
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+build_tree at /storage/home/kmd6851/.julia/packages/AdvancedHMC/HQHnm/src/trajectory.jl:612
+unknown function (ip: 0x2b57c5c80ae0)
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+transition at /storage/home/kmd6851/.julia/packages/AdvancedHMC/HQHnm/src/trajectory.jl:645
+transition at /storage/home/kmd6851/.julia/packages/AdvancedHMC/HQHnm/src/sampler.jl:57 [inlined]
+#step#42 at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/hmc.jl:237
+step##kw at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/hmc.jl:232
+unknown function (ip: 0x2b57a07f0a08)
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+macro expansion at /storage/home/kmd6851/.julia/packages/AbstractMCMC/BPJCW/src/sample.jl:166 [inlined]
+macro expansion at /storage/home/kmd6851/.julia/packages/AbstractMCMC/BPJCW/src/logging.jl:15 [inlined]
+#mcmcsample#20 at /storage/home/kmd6851/.julia/packages/AbstractMCMC/BPJCW/src/sample.jl:114
+unknown function (ip: 0x2b58529ba672)
+mcmcsample##kw at /storage/home/kmd6851/.julia/packages/AbstractMCMC/BPJCW/src/sample.jl:107 [inlined]
+#resume#32 at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/Inference.jl:404 [inlined]
+resume##kw at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/Inference.jl:401 [inlined]
+#resume#31 at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/Inference.jl:396 [inlined]
+resume##kw at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/Inference.jl:396 [inlined]
+#sample#40 at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/hmc.jl:138 [inlined]
+sample##kw at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/hmc.jl:116 [inlined]
+#sample#2 at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/Inference.jl:142 [inlined]
+sample##kw at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/Inference.jl:142 [inlined]
+#sample#1 at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/Inference.jl:132 [inlined]
+sample##kw at /storage/home/kmd6851/.julia/packages/Turing/uMQmD/src/inference/Inference.jl:132
+unknown function (ip: 0x2b58527e0e09)
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+macro expansion at /storage/work/k/kmd6851/SuperFit/src/sample_multithread.jl:116 [inlined]
+#88#threadsfor_fun at ./threadingconstructs.jl:81
+#88#threadsfor_fun at ./threadingconstructs.jl:48
+unknown function (ip: 0x2b58527dcecc)
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1703 [inlined]
+start_task at /buildworker/worker/package_linux64/build/src/task.c:839
+unknown function (ip: (nil))
+unknown function (ip: (nil))
+Allocations: 1408926881 (Pool: 1380541796; Big: 28385085); GC: 1912

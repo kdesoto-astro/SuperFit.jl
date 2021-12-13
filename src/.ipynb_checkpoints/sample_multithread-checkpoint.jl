@@ -1,5 +1,5 @@
 function choose_init_params(mle)
-    println(mle.values.array)
+    #println(mle.values.array)
     mle_values = mle.values.array
     offsets = [50., 0.001, 1.0, 10.0, 0.1, 200., 5., 20., 0.5]
     #hessian = ReverseDiff.hessian(mle.f, mle.values.array[:, 1])   
@@ -10,7 +10,7 @@ function choose_init_params(mle)
                 offsets[i] = 3*std_err #3 stddev away
             end
         catch
-            println(string("Using manual offset for ", i))
+            #println(string("Using manual offset for ", i))
         end
     end
     init_params = []
@@ -30,7 +30,7 @@ function choose_init_params(mle)
             append!(init_params, max(0. , mle_values[i] + random_offset))
         end
     end
-    println(string("init ", init_params))
+    #println(string("init ", init_params))
     return init_params
 end
 
@@ -60,18 +60,23 @@ function sample_or_load_trace(model,
     trace : Chains
         A Julia Chains object for the MCMC run.
     """
-    #basename = os.path.basename(trace_file)
+    global_logger(ConsoleLogger(stderr, Logging.Error))
+    
+    #Number of iterations and walkers must be positive
+    @assert iterations > 0 "Number of iterations between convergence checks must be positive."
+    @assert walkers > 1 "Number of chains must be greater than 1 for Gelman-Rubin convergence diagnostic."
+    
     println("SAMPLING AND LOADING TRACE")
-    println(Threads.nthreads())
     if !ispath(trace_file) || force
         #logging.info(f'Starting fit for {basename}')
         rhat_plot_arr = zeros(Float64, 1, length(DynamicPPL.syms(DynamicPPL.VarInfo(model))))
-        mle_estimate = optimize(model, MAP(), Optim.Options(iterations=200_000, allow_f_increases=true))
-        #println("MLE",mle_estimate.values.array)
         iteration_interval = iterations
         traces = Array{MCMCChains.Chains}(undef, walkers)
-        Threads.@threads for i in 1:walkers
-            @suppress_err begin
+        try
+            #time = @elapsed optimize(model, MAP(), Optim.Options(iterations=200_000, allow_f_increases=true))
+            #println(time)
+            mle_estimate = optimize(model, MAP(), Optim.Options(iterations=200_000, allow_f_increases=true))
+            Threads.@threads for i in 1:walkers
                 traces[i] = Turing.sample(model,
                     algorithm,
                     iteration_interval,
@@ -80,6 +85,17 @@ function sample_or_load_trace(model,
                     save_state=true,
                     discard_initial=0,
                     init_theta = choose_init_params(mle_estimate)
+                )
+            end
+        catch
+            Threads.@threads for i in 1:walkers
+                traces[i] = Turing.sample(model,
+                    algorithm,
+                    iteration_interval,
+                    progress=false,
+                    chain_type = MCMCChains.Chains,
+                    save_state=true,
+                    discard_initial=0
                 )
             end
         end
@@ -93,29 +109,37 @@ function sample_or_load_trace(model,
         trace = read(trace_file, Chains)
         #logging.info(f'Loaded trace from {trace_file}')
     end
+    
     return trace
 end
 
 function update_traces(old_traces, model, algorithm, num_iterations, num_walkers)
+    
+    @assert length(old_traces) == num_walkers "Number of traces must equal number of specified chains."
+    @assert num_iterations > 0 "Number of iterations to sample must be positive."
+    @assert num_walkers > 0 "Number of chains must be positive."
+    
     new_traces = Array{MCMCChains.Chains}(undef, num_walkers)
     samples = AbstractMCMC.chainsstack(old_traces)
     start_iter = range(samples)[end]+1
     Threads.@threads for i in 1:num_walkers
-        @suppress_err begin
-            temp_trace = Turing.sample(model,
-                    algorithm,
-                    num_iterations,
-                    progress=false,
-                    resume_from = old_traces[i],
-                    chain_type = MCMCChains.Chains,
-                    save_state=true,
-                    discard_initial=0
-            )
-            temp_trace_renumbered = MCMCChains.setrange(temp_trace, start_iter:(start_iter+num_iterations-1))
-            new_traces[i] = AbstractMCMC.cat(old_traces[i], temp_trace_renumbered, dims=1)
-            #CSV.write("cat_chain.csv", DataFrame(new_traces[i]))
-        end
+        temp_trace = Turing.sample(model,
+                algorithm,
+                num_iterations,
+                progress=false,
+                resume_from = old_traces[i],
+                chain_type = MCMCChains.Chains,
+                save_state=true,
+                discard_initial=0
+        )
+        temp_trace_renumbered = MCMCChains.setrange(temp_trace, start_iter:(start_iter+num_iterations-1))
+        new_traces[i] = AbstractMCMC.cat(old_traces[i], temp_trace_renumbered, dims=1)
+        #CSV.write("cat_chain.csv", DataFrame(new_traces[i]))
         #println(new_traces[i].info)
     end
+    
+    #Check invariants
+    @assert length(old_traces) == length(new_traces) "Number of chains should not change during sampling."
+    
     return new_traces
 end

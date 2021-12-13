@@ -1,0 +1,558 @@
+Starting job SuperFitSimLC
+Thu Dec  9 13:47:07 EST 2021
+Job id: 32720264.torque01.util.production.int.aci.ics.psu.edu
+Nodefile: /var/spool/torque/aux//32720264.torque01.util.production.int.aci.ics.psu.edu
+Was assigned the following nodes
+comp-bc-0374
+comp-bc-0374
+Loading modules to provide Julia 1.6.0
+About to change into /storage/work/k/kmd6851/SuperFit/benchmarks
+About to start Julia specifying list of assigned nodes
+Warning: Permanently added 'comp-bc-0374' (ECDSA) to the list of known hosts.
+Number of workers before: 1
+Number of threads before: 1
+Number of procs before: 1
+      From worker 2:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 3:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+Dict{String, Any}("gamma_1" => nothing, "tau_fall" => nothing, "walkers" => 6, "output_dir" => "../../stored_models", "amplitude" => nothing, "timing_dir" => "../../stored_times", "tau_rise" => nothing, "sigma" => 0.1, "nsimulations" => 1, "force" => true, "gamma_switch" => nothing, "gamma_2" => nothing, "iterations" => 5000, "algorithm" => "NUTS", "beta" => nothing, "npoints" => 30, "t_0" => nothing)
+Number of workers: 2
+Number of threads: 1
+Number of procs: 3
+[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+      From worker 2:	10
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	1
+      From worker 3:	20
+      From worker 2:	[1.0001, 0.009999999999999985, 4.999999994006813, 59.9999999741541, 0.7085172176856948, 59528.0, 49.99999263009782, 1.0000009706346127, 0.001]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[6.62681617463539, 0.01, 5.008712313883015, 64.90911576088352, 0.715810425397316, 59506.45812878489, 49.43458509200669, 11.321724791541438, 0.15998332397442183]
+      From worker 2:	[1.0001, 0.009999999999999985, 4.999999994006813, 59.9999999741541, 0.7085172176856948, 59528.0, 49.99999263009782, 1.0000009706346127, 0.001]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[1.0, 0.01, 4.361029513493905, 53.32036012528574, 0.7496154286939245, 59647.04165135798, 47.00896943249916, 1.0, 0.32724333464699773]
+      From worker 2:	[1.0001, 0.009999999999999985, 4.999999994006813, 59.9999999741541, 0.7085172176856948, 59528.0, 49.99999263009782, 1.0000009706346127, 0.001]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[46.22082140277239, 0.009836191239887562, 5.684330204035964, 61.38096512896914, 0.7113776846530908, 59517.78675566347, 50.0, 1.0, 0.0]
+      From worker 2:	[1.0001, 0.009999999999999985, 4.999999994006813, 59.9999999741541, 0.7085172176856948, 59528.0, 49.99999263009782, 1.0000009706346127, 0.001]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[1.0, 0.01, 4.384566661812232, 60.224698121211894, 0.6432961131644794, 59477.88478193543, 47.332817345017965, 16.074490665880536, 0.21645748414662924]
+      From worker 2:	[1.0001, 0.009999999999999985, 4.999999994006813, 59.9999999741541, 0.7085172176856948, 59528.0, 49.99999263009782, 1.0000009706346127, 0.001]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[40.61995437014954, 0.01, 4.949913977919074, 66.79871027382129, 0.6788048222394636, 59463.26842753808, 47.682650132025685, 1.0, 0.30501537188478645]
+      From worker 2:	[1.0001, 0.009999999999999985, 4.999999994006813, 59.9999999741541, 0.7085172176856948, 59528.0, 49.99999263009782, 1.0000009706346127, 0.001]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[1.0, 0.009316148210261953, 5.258719762009338, 59.30349286777244, 0.6624054897931014, 59407.31716203254, 46.79549994749026, 11.610810202074202, 0.0]
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	1
+      From worker 3:	[1.0001, 0.008005860350419666, 4.999999771198007, 60.00000007558587, 0.9610082976576411, 59528.0, 0.8009301608366054, 299.9912790908843, 0.001000000002424659]
+      From worker 2:	5000[1.0058455306850747, 1.0006934272548165, 1.0007086002143541, 1.0014703597120151, 1.0031986384483305, 1.0160263936664902, 1.002134385043491, 1.0032419252821614, 1.0013171989338032]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[1.0, 0.0072618666647685124, 4.436130909533123, 62.493102243692135, 1.0, 59618.89534919126, 0.01, 285.2311974245538, 0.0]
+      From worker 3:	[1.0001, 0.008005860350419666, 4.999999771198007, 60.00000007558587, 0.9610082976576411, 59528.0, 0.8009301608366054, 299.9912790908843, 0.001000000002424659]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[15.4971202377352, 0.008451584366150598, 5.862723374941256, 65.22668174315153, 0.9474822618229226, 59459.189940808006, 0.01, 298.47777243977146, 0.0]
+      From worker 3:	[1.0001, 0.008005860350419666, 4.999999771198007, 60.00000007558587, 0.9610082976576411, 59528.0, 0.8009301608366054, 299.9912790908843, 0.001000000002424659]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[1.0, 0.008824167021160444, 5.980756545550432, 60.45829801652832, 0.9764317368817683, 59500.46471034891, 5.608137487718048, 295.49669042636924, 0.34749030238417494]
+      From worker 3:	[1.0001, 0.008005860350419666, 4.999999771198007, 60.00000007558587, 0.9610082976576411, 59528.0, 0.8009301608366054, 299.9912790908843, 0.001000000002424659]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[19.84546999879414, 0.008126226691995917, 5.966939293947968, 51.593155411978046, 1.0, 59577.33641018406, 2.72715265423753, 300.0, 0.0]
+      From worker 3:	[1.0001, 0.008005860350419666, 4.999999771198007, 60.00000007558587, 0.9610082976576411, 59528.0, 0.8009301608366054, 299.9912790908843, 0.001000000002424659]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[47.04539118439705, 0.0086043323216042, 5.911761452281683, 67.7371954477196, 0.905553352093619, 59575.42153859721, 0.01, 300.0, 0.0]
+      From worker 3:	[1.0001, 0.008005860350419666, 4.999999771198007, 60.00000007558587, 0.9610082976576411, 59528.0, 0.8009301608366054, 299.9912790908843, 0.001000000002424659]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[46.453906882041466, 0.00786412729780124, 5.6690005924447675, 68.51649336920005, 0.9518053847018142, 59683.5840910601, 2.0268831162384933, 295.0210433512311, 0.0]
+      From worker 3:	5000[1.0023810678312273, 1.0008228121509626, 1.0000506421806035, 1.0005394455166148, 1.0004905191153166, 1.0053063030531029, 1.0046336853936428, 1.0043763699770694, 1.000235221020851]
+      From worker 2:	10000[1.0089784870144882, 1.0017550183402528, 1.001855172686661, 1.0041338026973483, 1.0036108835399677, 1.0082689494617656, 1.0028710740378726, 1.0121937312170763, 1.0014598302247224]
+      From worker 3:	10000[1.0012137201596336, 1.0003188619121044, 1.0000797234206038, 1.000104605287036, 1.0000832850089978, 1.0028048774309288, 1.0013063680369443, 1.0013634990445015, 1.0001017196364401]
+      From worker 3:	30
+      From worker 3:	30
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	1
+      From worker 3:	[1.0001, 0.000186377289463149, 5.000000000036881, 59.99999999998464, 0.10851105122584982, 59528.0, 4.203519868569694, 1.0130948009251375, 8.456811905932478]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[1.0, 0.0, 5.375771342564976, 59.424278385466515, 0.1763556346780747, 59456.15266797529, 5.330168044088717, 1.0, 8.886100835964077]
+      From worker 3:	[1.0001, 0.000186377289463149, 5.000000000036881, 59.99999999998464, 0.10851105122584982, 59528.0, 4.203519868569694, 1.0130948009251375, 8.456811905932478]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[39.27069058156803, 0.0, 4.7818164699423935, 69.27375596108544, 0.1939972457574966, 59521.94404300731, 8.964172422309401, 1.6871662573313335, 8.53174469471109]
+      From worker 3:	[1.0001, 0.000186377289463149, 5.000000000036881, 59.99999999998464, 0.10851105122584982, 59528.0, 4.203519868569694, 1.0130948009251375, 8.456811905932478]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[31.505941045833364, 0.0010049113395777592, 5.732740087561546, 60.00632132944409, 0.1820969351754289, 59695.46479371732, 4.648885718330516, 20.822113740826858, 8.473976352109288]
+      From worker 3:	[1.0001, 0.000186377289463149, 5.000000000036881, 59.99999999998464, 0.10851105122584982, 59528.0, 4.203519868569694, 1.0130948009251375, 8.456811905932478]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[16.048375834083767, 0.0003400363409712994, 4.852148778455269, 56.18487401101534, 0.15899944275846967, 59615.24067860019, 8.065278353033364, 1.0, 8.463571562452973]
+      From worker 3:	[1.0001, 0.000186377289463149, 5.000000000036881, 59.99999999998464, 0.10851105122584982, 59528.0, 4.203519868569694, 1.0130948009251375, 8.456811905932478]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[1.0, 0.0002266153212338919, 5.843071233459247, 63.26321267579125, 0.043232068733365214, 59457.11067735322, 6.590248711687062, 1.0, 8.212091450719637]
+      From worker 3:	[1.0001, 0.000186377289463149, 5.000000000036881, 59.99999999998464, 0.10851105122584982, 59528.0, 4.203519868569694, 1.0130948009251375, 8.456811905932478]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[45.696720920409646, 0.0008781327584889215, 5.380496785527763, 65.03908107890922, 0.1036640040574811, 59339.825767842405, 3.760551016283152, 1.0, 8.773344485256795]
+      From worker 3:	5000[1.0017086941262934, 1.000215550392712, 1.0005210244508986, 1.0010958108848462, 1.00009926812598, 1.0062797608363456, 1.0014989626306479, 1.0013608302939616, 1.0018164741101627]
+      From worker 2:	40
+      From worker 2:	40
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	1
+      From worker 2:	[1.0001, 0.00999999999753482, 4.999999999999462, 60.00000000011802, 0.25084798490313026, 59528.0, 49.99999999997859, 1.0, 16.127521477361096]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[3.1588668034427805, 0.01, 5.213054775487951, 58.14325258603162, 0.2630772963024305, 59598.16436822812, 46.97888492029064, 1.0, 15.96495429859608]
+      From worker 2:	[1.0001, 0.00999999999753482, 4.999999999999462, 60.00000000011802, 0.25084798490313026, 59528.0, 49.99999999997859, 1.0, 16.127521477361096]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[6.507498935148025, 0.009912734428439828, 4.315721257487317, 58.41338511059131, 0.3357074730017069, 59568.18722723133, 45.04293620865746, 8.977406723958154, 15.998173870899992]
+      From worker 2:	[1.0001, 0.00999999999753482, 4.999999999999462, 60.00000000011802, 0.25084798490313026, 59528.0, 49.99999999997859, 1.0, 16.127521477361096]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[47.341201192922966, 0.01, 4.924104646807545, 63.00050757974809, 0.18814480308462272, 59368.60411924459, 50.0, 5.425386742526271, 15.899748613400828]
+      From worker 2:	[1.0001, 0.00999999999753482, 4.999999999999462, 60.00000000011802, 0.25084798490313026, 59528.0, 49.99999999997859, 1.0, 16.127521477361096]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[1.0, 0.01, 4.568054505318423, 52.39550725360272, 0.28419960295045743, 59435.46250019058, 49.434451507526646, 1.0, 15.90254870312921]
+      From worker 2:	[1.0001, 0.00999999999753482, 4.999999999999462, 60.00000000011802, 0.25084798490313026, 59528.0, 49.99999999997859, 1.0, 16.127521477361096]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[41.453234616316166, 0.009407054446759525, 4.04037822970743, 51.651375914829835, 0.15661717520703747, 59444.1831065042, 50.0, 1.0, 15.744597779817871]
+      From worker 2:	[1.0001, 0.00999999999753482, 4.999999999999462, 60.00000000011802, 0.25084798490313026, 59528.0, 49.99999999997859, 1.0, 16.127521477361096]
+      From worker 2:	Using manual offset for 1
+      From worker 2:	Using manual offset for 2
+      From worker 2:	Using manual offset for 3
+      From worker 2:	Using manual offset for 4
+      From worker 2:	Using manual offset for 5
+      From worker 2:	Using manual offset for 6
+      From worker 2:	Using manual offset for 7
+      From worker 2:	Using manual offset for 8
+      From worker 2:	Using manual offset for 9
+      From worker 2:	init Any[1.0, 0.009646931988468162, 5.238832701085523, 61.72543181998717, 0.16808392144726014, 59547.49812177267, 50.0, 8.039909678299452, 16.00469005256974]
+      From worker 3:	10000[1.0008420566083371, 1.000102750729358, 1.000106512784572, 1.000606074614231, 1.0000578915227456, 1.0032034124196993, 1.0006346988457568, 1.0006020339737436, 1.0005947127275028]
+      From worker 3:	50
+      From worker 3:	50
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	1
+      From worker 3:	[107.62771514195283, 0.0015684606889470425, 5.000000000042893, 59.9999999995169, 0.5078409554628995, 59044.1413478636, 3.2713974528597727, 298.5446640427034, 16.292896414937484]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[151.31829992394438, 0.0005800672125256976, 4.988612421113714, 50.87301056727976, 0.49786829522572323, 58846.66454006369, 5.0720746966197705, 300.0, 16.75056917242464]
+      From worker 3:	[107.62771514195283, 0.0015684606889470425, 5.000000000042893, 59.9999999995169, 0.5078409554628995, 59044.1413478636, 3.2713974528597727, 298.5446640427034, 16.292896414937484]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[140.823896481137, 0.0019318186944767457, 5.7350959009970435, 58.61807088860525, 0.5495084273888361, 59186.91082098442, 0.01, 300.0, 16.301871979442815]
+      From worker 2:	5000[1.0065511366970028, 1.0001475355406924, 0.9999296167053139, 1.0003926218915986, 1.0002828694794057, 1.005229188127595, 1.0008951800865575, 1.0011877696880396, 1.004608404657909]
+      From worker 3:	[107.62771514195283, 0.0015684606889470425, 5.000000000042893, 59.9999999995169, 0.5078409554628995, 59044.1413478636, 3.2713974528597727, 298.5446640427034, 16.292896414937484]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[67.99429632676703, 0.0009750330254306596, 4.385083631298533, 66.49928415227708, 0.43652138246593725, 59093.89477529211, 4.247771512977243, 300.0, 16.061822312684292]
+      From worker 3:	[107.62771514195283, 0.0015684606889470425, 5.000000000042893, 59.9999999995169, 0.5078409554628995, 59044.1413478636, 3.2713974528597727, 298.5446640427034, 16.292896414937484]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[59.67721751840115, 0.0024829677452483444, 5.911974347548756, 67.22893343064449, 0.42653573559020674, 58957.96031231307, 6.948258675533388, 300.0, 16.7840720981681]
+      From worker 3:	[107.62771514195283, 0.0015684606889470425, 5.000000000042893, 59.9999999995169, 0.5078409554628995, 59044.1413478636, 3.2713974528597727, 298.5446640427034, 16.292896414937484]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[152.5851616682466, 0.0021460671884656734, 4.429886801475353, 62.02216690071912, 0.5461732680202468, 59182.38103900042, 0.01, 300.0, 16.44165368385069]
+      From worker 3:	[107.62771514195283, 0.0015684606889470425, 5.000000000042893, 59.9999999995169, 0.5078409554628995, 59044.1413478636, 3.2713974528597727, 298.5446640427034, 16.292896414937484]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[74.9074649854721, 0.0009489212710967595, 4.055072513280206, 65.79242785566169, 0.5965787313312239, 58858.222049013166, 1.5630379917251296, 300.0, 16.1608750744898]
+      From worker 3:	5000[1.0042712727894707, 1.000171332243682, 1.0001319788376266, 1.0000565998733961, 1.0000530027494454, 1.0073544729351096, 1.000219019525537, 1.0008757601499605, 1.003714771431246]
+      From worker 2:	10000[1.0033003096297108, 1.000083352356815, 1.0000800300693027, 1.0001063691368295, 1.0000045089481544, 1.0026897237329784, 1.0000697481385057, 1.0002977511713373, 1.0015140974089172]
+      From worker 3:	10000[1.0020848916417604, 1.000054599304127, 1.0000353260676056, 1.000034691385931, 0.9999783705840208, 1.0035031057035129, 1.0002695479817696, 1.000459482456711, 1.0012694749121849]
+      From worker 3:	60
+      From worker 3:	60
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	1
+      From worker 3:	[58.97013051691069, 0.009999999999998179, 5.038969089691483, 60.0000043446061, 0.2676840856392976, 58189.1200830403, 26.049167350376624, 136.8025128137201, 0.0010000000000000243]
+      From worker 3:	init Any[58.36559254411717, 0.0, 10.733541665362136, 62.181728527514544, 0.20516578420588083, 58202.11777910879, 30.12186113657557, 138.07279625931704, 0.0]
+      From worker 3:	[58.97013051691069, 0.009999999999998179, 5.038969089691483, 60.0000043446061, 0.2676840856392976, 58189.1200830403, 26.049167350376624, 136.8025128137201, 0.0010000000000000243]
+      From worker 3:	init Any[57.152490284203054, 0.0, 5.622830379108781, 68.43399485806134, 1.0, 58178.40617247967, 38.092823567619405, 136.9054182759934, 0.0]
+      From worker 3:	[58.97013051691069, 0.009999999999998179, 5.038969089691483, 60.0000043446061, 0.2676840856392976, 58189.1200830403, 26.049167350376624, 136.8025128137201, 0.0010000000000000243]
+      From worker 3:	init Any[60.861088891904615, 0.01, 7.100390609525413, 68.72363809714871, 1.0, 58171.289664971264, 25.699983211992016, 135.08706544554346, 0.0]
+      From worker 3:	[58.97013051691069, 0.009999999999998179, 5.038969089691483, 60.0000043446061, 0.2676840856392976, 58189.1200830403, 26.049167350376624, 136.8025128137201, 0.0010000000000000243]
+      From worker 3:	init Any[61.315070862953256, 0.0, 0.0, 61.20605929962544, 1.0, 58164.87488799885, 17.374023809360953, 135.7524961712392, 0.0]
+      From worker 3:	[58.97013051691069, 0.009999999999998179, 5.038969089691483, 60.0000043446061, 0.2676840856392976, 58189.1200830403, 26.049167350376624, 136.8025128137201, 0.0010000000000000243]
+      From worker 3:	init Any[67.12397200805383, 0.01, 0.5980332219816278, 63.67424671105405, 0.0, 58165.505867339474, 44.098909048912894, 135.9238968053105, 0.0]
+      From worker 2:	70
+      From worker 2:	70
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	1
+      From worker 2:	[7.077287913277723, 0.01, 4.934922814786035, 59.99999979900482, 0.014585787678352608, 58670.25225788071, 11.750015324953411, 155.64370833898585, 0.0010000000000094439]
+      From worker 2:	init Any[8.119214926340332, 0.0, 6.143126130434477, 63.01235960786109, 0.0, 58671.203516578375, 8.169171285155638, 157.93323463817066, 0.006798041986670898]
+      From worker 2:	[7.077287913277723, 0.01, 4.934922814786035, 59.99999979900482, 0.014585787678352608, 58670.25225788071, 11.750015324953411, 155.64370833898585, 0.0010000000000094439]
+      From worker 2:	init Any[5.229864325475246, 0.0, 4.918148857637053, 58.14382470762617, 0.3681671650949778, 58669.29073609837, 7.881204499506109, 157.17785086679814, 0.005275544815782257]
+      From worker 2:	[7.077287913277723, 0.01, 4.934922814786035, 59.99999979900482, 0.014585787678352608, 58670.25225788071, 11.750015324953411, 155.64370833898585, 0.0010000000000094439]
+      From worker 2:	init Any[9.238480335386646, 0.01, 3.6600651629346395, 62.42491492623173, 0.11074568602415957, 58670.057752747256, 8.820287955736452, 158.53036251663127, 0.0]
+      From worker 2:	[7.077287913277723, 0.01, 4.934922814786035, 59.99999979900482, 0.014585787678352608, 58670.25225788071, 11.750015324953411, 155.64370833898585, 0.0010000000000094439]
+      From worker 2:	init Any[5.377646268537592, 0.0, 5.933583088923178, 62.13280212154499, 0.1875202033012856, 58666.209775094896, 9.4926582176812, 152.9947464889466, 0.0]
+      From worker 2:	[7.077287913277723, 0.01, 4.934922814786035, 59.99999979900482, 0.014585787678352608, 58670.25225788071, 11.750015324953411, 155.64370833898585, 0.0010000000000094439]
+      From worker 2:	init Any[7.364341505032803, 0.01, 4.9463452441151725, 69.88606043149358, 0.0, 58669.159725512385, 13.402992707492757, 156.10533421485468, 0.0]
+      From worker 2:	[7.077287913277723, 0.01, 4.934922814786035, 59.99999979900482, 0.014585787678352608, 58670.25225788071, 11.750015324953411, 155.64370833898585, 0.0010000000000094439]
+      From worker 2:	init Any[5.028083352830797, 0.0, 5.238424139307457, 50.60756149718917, 0.0, 58670.017272759476, 7.901408551497307, 158.21715849681982, 0.014615109853868553]
+      From worker 3:	[58.97013051691069, 0.009999999999998179, 5.038969089691483, 60.0000043446061, 0.2676840856392976, 58189.1200830403, 26.049167350376624, 136.8025128137201, 0.0010000000000000243]
+      From worker 3:	init Any[69.74615954237964, 0.0, 0.9224095744013505, 63.3068525852426, 0.0, 58187.9322930988, 16.33028117356176, 137.41782390383622, 0.058542389922778014]
+      From worker 2:	5000[1.0090923139383574, 1.0000750551238733, 1.0000422957337687, 1.0001153176848843, 1.000405559444843, 1.012776365834186, 1.0064536903185914, 1.0019239980110508, 1.0052575648675612]
+      From worker 3:	5000[1.0028891956392414, 1.000087123674292, 1.0000448835307472, 1.000382830719657, 0.9999563637685417, 1.0016245541355562, 1.0002831937602212, 1.000450420153865, 1.0017520646500815]
+      From worker 2:	10000[1.0044902198278653, 1.0001220185303006, 1.0000750161670933, 1.0000179320661418, 1.000123611818484, 1.0062119454802525, 1.0021567112968026, 1.0003979485456054, 1.0023529227518986]
+      From worker 3:	10000[1.0014366253529334, 0.9999982522048204, 1.0000199581792364, 1.0000420412007067, 0.999937661229625, 1.0006765138123555, 1.0001177894763715, 1.000131263844498, 1.0005511804103528]
+      From worker 3:	80
+      From worker 3:	80
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	1
+  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 3:	[1.7842696053895069, 0.004453441927570965, 4.999999999985166, 60.00000000005157, 0.2716435543892848, 58955.01141328515, 5.184165773915102, 262.0074554776092, 0.3822638924055323]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[8.892184321806095, 0.004781208501062733, 5.634586431604659, 68.53197143177171, 0.29549893007765055, 58771.0253311976, 3.4158527937715903, 259.99262272004495, 0.0]
+      From worker 3:	[1.7842696053895069, 0.004453441927570965, 4.999999999985166, 60.00000000005157, 0.2716435543892848, 58955.01141328515, 5.184165773915102, 262.0074554776092, 0.3822638924055323]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[21.867367242484985, 0.005010168188693992, 4.572387039101205, 64.177281796063, 0.23485009585124028, 59042.00601346365, 3.530839295585107, 243.29017649262474, 0.5936079589701377]
+      From worker 3:	[1.7842696053895069, 0.004453441927570965, 4.999999999985166, 60.00000000005157, 0.2716435543892848, 58955.01141328515, 5.184165773915102, 262.0074554776092, 0.3822638924055323]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[27.596683031556605, 0.00396239339782914, 5.298110409214162, 50.573345170551, 0.22938627947002424, 59054.77346266644, 4.615844770689619, 242.92340312451353, 0.16531177551613702]
+      From worker 3:	[1.7842696053895069, 0.004453441927570965, 4.999999999985166, 60.00000000005157, 0.2716435543892848, 58955.01141328515, 5.184165773915102, 262.0074554776092, 0.3822638924055323]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[1.0, 0.004244558450942319, 5.594186359601254, 69.3279166202932, 0.2234830111335599, 59010.93811979391, 6.045912017785631, 258.2444768666523, 0.5413418809955954]
+      From worker 2:	90
+      From worker 2:	90
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	1
+      From worker 2:	[2548.8247514984564, 0.00987367896726175, 4.999999972607161, 59.99999977338478, 0.3644124641262159, 58058.0, 49.99999999999974, 300.0, 0.0010000000035400077]
+      From worker 2:	init Any[1.266477428492766e6, 0.0, 0.0, 50.66331817597357, 1.0, 0.0, 50.0, 300.0, 0.0]
+      From worker 2:	[2548.8247514984564, 0.00987367896726175, 4.999999972607161, 59.99999977338478, 0.3644124641262159, 58058.0, 49.99999999999974, 300.0, 0.0010000000035400077]
+      From worker 2:	init Any[1.0, 0.01, 0.0, 58.340803154367755, 0.0, 57486.298922582064, 50.0, 212.1609546246641, 0.0]
+      From worker 2:	[2548.8247514984564, 0.00987367896726175, 4.999999972607161, 59.99999977338478, 0.3644124641262159, 58058.0, 49.99999999999974, 300.0, 0.0010000000035400077]
+      From worker 2:	init Any[1.0, 0.01, 0.0, 57.55104598433346, 0.0, 0.0, 50.0, 160.32921535559092, 0.0]
+      From worker 2:	[2548.8247514984564, 0.00987367896726175, 4.999999972607161, 59.99999977338478, 0.3644124641262159, 58058.0, 49.99999999999974, 300.0, 0.0010000000035400077]
+      From worker 2:	init Any[1.0, 0.0, 216.57977209729137, 55.93221772372402, 1.0, 0.0, 50.0, 300.0, 0.04915355837482397]
+      From worker 2:	[2548.8247514984564, 0.00987367896726175, 4.999999972607161, 59.99999977338478, 0.3644124641262159, 58058.0, 49.99999999999974, 300.0, 0.0010000000035400077]
+      From worker 2:	init Any[90547.78700121147, 0.0, 245.7450274274646, 57.234801754158866, 0.0, 0.0, 50.0, 279.51984813172606, 0.02043185938514789]
+      From worker 2:	[2548.8247514984564, 0.00987367896726175, 4.999999972607161, 59.99999977338478, 0.3644124641262159, 58058.0, 49.99999999999974, 300.0, 0.0010000000035400077]
+      From worker 2:	init Any[1.4634937496826465e6, 0.0, 0.0, 60.83547810612898, 1.0, 0.0, 0.01, 300.0, 0.10952322957299393]
+      From worker 3:	[1.7842696053895069, 0.004453441927570965, 4.999999999985166, 60.00000000005157, 0.2716435543892848, 58955.01141328515, 5.184165773915102, 262.0074554776092, 0.3822638924055323]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[50.855510188303874, 0.004294565802918253, 5.294181132820086, 55.20026612769858, 0.2898948108727564, 58862.792519293005, 3.7217052861179094, 264.2506750838835, 0.5381365217275058]
+      From worker 3:	[1.7842696053895069, 0.004453441927570965, 4.999999999985166, 60.00000000005157, 0.2716435543892848, 58955.01141328515, 5.184165773915102, 262.0074554776092, 0.3822638924055323]
+      From worker 3:	Using manual offset for 1
+      From worker 3:	Using manual offset for 2
+      From worker 3:	Using manual offset for 3
+      From worker 3:	Using manual offset for 4
+      From worker 3:	Using manual offset for 5
+      From worker 3:	Using manual offset for 6
+      From worker 3:	Using manual offset for 7
+      From worker 3:	Using manual offset for 8
+      From worker 3:	Using manual offset for 9
+      From worker 3:	init Any[19.524219830132008, 0.003591769170466849, 4.736848442470242, 50.1739416237731, 0.23417194966995225, 58797.67588473442, 3.5156945368482777, 280.8131461451201, 0.33801631975660235]
+      From worker 2:	5000[1.0065962497930938, 0.9999581648084592, 1.0002335845946637, 1.0004599267068595, 1.0003455955291445, 1.0248430524646586, 1.0073006312371877, 1.012014457665569, 1.0035858673624451]
+      From worker 3:	5000[1.4236159086167817, 1.0117099765702877, 1.0936402488130825, 1.0121209725940499, 1.125698637296586, 1.7272961958723878, 1.0348404086775336, 1.373531047455061, 1.7540101452685883]
+      From worker 3:	10000[1.4217607190585309, 1.036119707512081, 1.1385777781273474, 1.0188118334237806, 1.2045401380205154, 1.6537883509850182, 1.123681491731253, 1.4247859845740167, 2.0911860382180656]
+      From worker 2:	10000[1.003270378621451, 1.0000003263580526, 1.0001161791991924, 1.000292350511001, 1.0000777287485176, 1.0120955095132125, 1.0033188737586627, 1.0042202652238035, 1.000734916202967]
+      From worker 3:	15000[1.4784247478876842, 1.0354873038662857, 1.11185538374084, 1.0142405374314247, 1.1733380682490713, 1.818584162360758, 1.2061904174897433, 1.3909052824348886, 2.355158850171601]
+      From worker 2:	100
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	1
+      From worker 2:	[709.6450736049417, 9.537969835972309e-17, 5.409581343255616, 59.99999983029957, 0.2580131301602719, 58162.18295698415, 12.012942162336358, 246.35719111158124, 0.0010000000000163962]
+      From worker 2:	init Any[834.0579853708698, 0.0, 2.112082287124408, 57.980257192836, 1.0, 58180.74116018081, 12.43338004646666, 241.5497768533647, 0.0]
+      From worker 2:	[709.6450736049417, 9.537969835972309e-17, 5.409581343255616, 59.99999983029957, 0.2580131301602719, 58162.18295698415, 12.012942162336358, 246.35719111158124, 0.0010000000000163962]
+      From worker 2:	init Any[924.0373710129925, 0.0, 0.0, 65.14531400221382, 0.0, 58124.055692345144, 50.0, 255.9530898408403, 0.0]
+      From worker 2:	[709.6450736049417, 9.537969835972309e-17, 5.409581343255616, 59.99999983029957, 0.2580131301602719, 58162.18295698415, 12.012942162336358, 246.35719111158124, 0.0010000000000163962]
+      From worker 2:	init Any[683.948048240222, 0.01, 20.406055560834766, 54.90542356774721, 1.0, 58185.12185264702, 34.46121131747966, 234.2187948821903, 0.007280271238096886]
+      From worker 2:	[709.6450736049417, 9.537969835972309e-17, 5.409581343255616, 59.99999983029957, 0.2580131301602719, 58162.18295698415, 12.012942162336358, 246.35719111158124, 0.0010000000000163962]
+      From worker 2:	init Any[863.3129041115365, 0.0, 0.0, 58.33268794860652, 1.0, 58202.29455576187, 17.486318492326944, 251.59501584856164, 0.0024635882868359314]
+      From worker 2:	[709.6450736049417, 9.537969835972309e-17, 5.409581343255616, 59.99999983029957, 0.2580131301602719, 58162.18295698415, 12.012942162336358, 246.35719111158124, 0.0010000000000163962]
+      From worker 2:	init Any[935.1823644776586, 0.01, 3.3311373007530767, 66.41890323940646, 1.0, 58124.39290354434, 50.0, 230.29348750199836, 0.0069651173982187165]
+      From worker 2:	[709.6450736049417, 9.537969835972309e-17, 5.409581343255616, 59.99999983029957, 0.2580131301602719, 58162.18295698415, 12.012942162336358, 246.35719111158124, 0.0010000000000163962]
+      From worker 2:	init Any[951.094658903182, 0.01, 0.0, 57.67566980027826, 0.0, 58191.87537403289, 50.0, 239.15874337751785, 0.0]
+      From worker 3:	20000[1.5355305513477309, 1.0548324094184836, 1.1746394971527108, 1.0119649187145208, 1.1833708092080177, 1.9356569841044067, 1.2699870791009904, 1.3816249072803617, 2.5801649725264375]
+      From worker 2:	5000[1.0503060189313842, 1.0004266274379616, 1.0000546766487899, 1.0003275550584048, 1.0002020046237363, 1.0711763377073724, 1.013168254225307, 1.0202525601799175, 1.0007507858523765]
+      From worker 3:	25000[1.5648156875356745, 1.0609939648527706, 1.1685740962348012, 1.0174572919593616, 1.1836120652115387, 2.029818934719111, 1.2710445847776437, 1.4005103368039196, 2.7572734631061953]
+      From worker 3:	30000[1.5864877849634245, 1.071711157184212, 1.1847715877618286, 1.0240229495849238, 1.1560283548573775, 2.093703679095396, 1.2375821361423365, 1.4023214842776135, 2.9063261183090097]
+      From worker 2:	10000[1.0240371312089982, 1.000179833274756, 1.0001694356865296, 1.0000288150030212, 1.0003363325970507, 1.0334926504494875, 1.006184111289347, 1.0066840403480373, 1.0005097870496316]
+      From worker 3:	35000[1.5238134030506187, 1.057633243356764, 1.1684757888743333, 1.032974303878876, 1.1635370987035978, 1.874926643784484, 1.2431670246220148, 1.3997531566633807, 2.8920266862876662]
+      From worker 3:	40000[1.4940204916826527, 1.045647400222236, 1.190940040475022, 1.021944015647768, 1.1735563584761735, 1.8162274171851962, 1.2415700526135172, 1.3748330115754286, 2.705502831308491]
+      From worker 3:	45000[1.5102592535370682, 1.0543562188952733, 1.185683590804584, 1.0218490167284386, 1.1677038471821295, 1.8605088378833394, 1.253856570490503, 1.3846058978375217, 2.804611291062286]
+      From worker 3:	50000[1.4658738646129281, 1.061829729334384, 1.1972788647117387, 1.019400561060656, 1.1585754002233979, 1.7476918406258095, 1.2474006151600423, 1.360378671631389, 2.73305350480381]
+      From worker 3:	55000[1.4807966813713718, 1.062347252074099, 1.1746571998128321, 1.0174729229335704, 1.1488184321754669, 1.785088230444049, 1.2542616522222523, 1.3711962467419967, 2.816778848059079]
+      From worker 3:	60000[1.4963612641412456, 1.0541890244306693, 1.1716042158735593, 1.018002914185302, 1.1494377312009203, 1.8230166943606878, 1.2705940353506555, 1.382316591102982, 2.886449007605635]
+      From worker 3:	65000[1.5103589203176906, 1.0586677759527336, 1.1670101008654088, 1.019493548367117, 1.1535635741298331, 1.8586401113712998, 1.2801340409545139, 1.391423600677846, 2.963775887925706]
+      From worker 3:	70000[1.5122454733165547, 1.055591710108951, 1.1751251916264438, 1.0225070497123172, 1.1474354507800666, 1.8620309787637122, 1.2915063818220842, 1.3954362456824185, 3.00391343629161]
+      From worker 3:	75000[1.4917203616719281, 1.068340084394359, 1.1764840908482048, 1.0213662223520636, 1.1425257430911482, 1.8150131239977596, 1.289331617945044, 1.3782000735320552, 3.0396249324067752]
+      From worker 3:	80000[1.4702838677809604, 1.0811827791648898, 1.1733039014390638, 1.0233193875289714, 1.14700960509441, 1.7477699700407057, 1.3039521636248133, 1.3787937400108035, 3.0091423227681733]
+      From worker 3:	85000[1.4697872881718756, 1.0827524722235327, 1.1697991300595636, 1.0229231002330508, 1.1470570196916547, 1.7450937614433535, 1.315208679204546, 1.3838155179942955, 2.9958565477383456]
+      From worker 3:	90000[1.4577463240130495, 1.0914154119658908, 1.1635592126055536, 1.0232602164851068, 1.1537694200671922, 1.7200130940414444, 1.322144081226638, 1.3743376844834905, 2.9603726109713038]
+      From worker 3:	95000[1.4586815628565313, 1.0950515465911583, 1.1651505896197025, 1.0229585177005818, 1.1558224821651593, 1.7245323574103129, 1.3308565735617546, 1.3782913969057073, 2.979354220939325]
+      From worker 3:	100000[1.460491178453519, 1.098691917139196, 1.1615794195686258, 1.023280949570554, 1.1533111194898993, 1.73230725306597, 1.33219528472505, 1.377043244526088, 3.0069431446458204]
+      From worker 3:	105000[1.4703056048195333, 1.0961021565290174, 1.162526484379859, 1.0233992649593544, 1.1594630829313721, 1.7568081459688014, 1.3162551167712142, 1.382848659972625, 3.054379441832883]
+1807.467287275
+Julia exited
+Thu Dec  9 14:19:25 EST 2021

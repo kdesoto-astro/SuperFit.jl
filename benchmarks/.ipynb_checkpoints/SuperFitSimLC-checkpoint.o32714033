@@ -1,0 +1,92 @@
+Starting job SuperFitSimLC
+Thu Dec  9 09:58:03 EST 2021
+Job id: 32714033.torque01.util.production.int.aci.ics.psu.edu
+Nodefile: /var/spool/torque/aux//32714033.torque01.util.production.int.aci.ics.psu.edu
+Was assigned the following nodes
+comp-bc-0362
+comp-bc-0362
+comp-bc-0362
+comp-bc-0362
+comp-bc-0362
+comp-bc-0362
+comp-bc-0362
+comp-bc-0362
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0361
+comp-bc-0358
+comp-bc-0358
+comp-bc-0358
+comp-bc-0358
+comp-bc-0358
+comp-bc-0358
+comp-bc-0358
+comp-bc-0358
+Loading modules to provide Julia 1.6.0
+About to change into /storage/work/k/kmd6851/SuperFit/benchmarks
+About to start Julia specifying list of assigned nodes
+Precompiling project...
+[91m  ✗ [39mSuperFit
+0 dependencies successfully precompiled in 42 seconds (225 already precompiled)
+[91m1[39m dependency errored
+Precompiling project...
+[91m  ✗ [39mSuperFit
+0 dependencies successfully precompiled in 33 seconds (225 already precompiled)
+
+ERROR: LoadError: The following 1 direct dependency failed to precompile:
+
+SuperFit [e6337bd4-ee96-4169-ac60-384789f26544]
+
+ERROR: LoadError: LoadError: syntax: unexpected ")"
+Stacktrace:
+  [1] top-level scope
+    @ /storage/work/k/kmd6851/SuperFit/src/sample_multithread.jl:95
+  [2] include(mod::Module, _path::String)
+    @ Base ./Base.jl:386
+  [3] include(x::String)
+    @ SuperFit /storage/work/k/kmd6851/SuperFit/src/SuperFit.jl:3
+  [4] top-level scope
+    @ /storage/work/k/kmd6851/SuperFit/src/SuperFit.jl:27
+  [5] include
+    @ ./Base.jl:386 [inlined]
+  [6] include_package_for_output(pkg::Base.PkgId, input::String, depot_path::Vector{String}, dl_load_path::Vector{String}, load_path::Vector{String}, concrete_deps::Vector{Pair{Base.PkgId, UInt64}}, source::Nothing)
+    @ Base ./loading.jl:1213
+  [7] top-level scope
+    @ none:1
+  [8] eval
+    @ ./boot.jl:360 [inlined]
+  [9] eval(x::Expr)
+    @ Base.MainInclude ./client.jl:446
+ [10] top-level scope
+    @ none:1
+in expression starting at /storage/work/k/kmd6851/SuperFit/src/sample_multithread.jl:95
+in expression starting at /storage/work/k/kmd6851/SuperFit/src/SuperFit.jl:3
+Stacktrace:
+ [1] pkgerror(msg::String)
+   @ Pkg.Types /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/Types.jl:55
+ [2] precompile(ctx::Pkg.Types.Context; internal_call::Bool, strict::Bool, kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+   @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:1225
+ [3] precompile
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:914 [inlined]
+ [4] #precompile#194
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:912 [inlined]
+ [5] precompile()
+   @ Pkg.API /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Pkg/src/API.jl:912
+ [6] top-level scope
+   @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:4
+in expression starting at /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:4
+Julia exited
+Thu Dec  9 09:59:22 EST 2021

@@ -1,4 +1,5 @@
 function prior_A(max_flux::Float64)
+    @assert max_flux > 0 "Maximum flux must be positive"
     return LogUniform(1.0001, 100. * max_flux)
 end
 

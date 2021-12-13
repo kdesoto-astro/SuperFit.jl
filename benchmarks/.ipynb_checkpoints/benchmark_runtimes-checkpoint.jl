@@ -1,6 +1,22 @@
+import Pkg
+#Pkg.activate("..")
+Pkg.instantiate()
+Pkg.precompile()
+
 using Distributed
+
+println("Number of workers before: " * string(nworkers()))
+println("Number of threads before: " * string(Threads.nthreads()))
+println("Number of procs before: " * string(nprocs()))
+    
+machinefilename = ENV["PBS_NODEFILE"]
+machinespecs = readlines( machinefilename )
+#num_processors = length(machinespecs[1:threads_per_process:end])
+addprocs(machinespecs)
+
 @everywhere import Pkg
-@everywhere Pkg.offline(true)
+#@everywhere Pkg.offline(true)
+@everywhere Pkg.UPDATED_REGISTRY_THIS_SESSION[] = true 
 @everywhere Pkg.activate("..")
 
 @everywhere using SuperFit
@@ -27,10 +43,10 @@ const ZEROPOINT_MAG = 22.
     println(num_times)
     times, fluxes_w_noise, noise_arr = SuperFit.generate_lightcurve_from_params(num_times, params, sigma)
     model = SuperFit.setup_model(times, fluxes_w_noise, noise_arr)
-    time = @elapsed SuperFit.sample_or_load_trace(model, trace_file,
+    trace = SuperFit.sample_or_load_trace(model, trace_file,
         force=force, algorithm=algorithm,
         iterations=iterations, walkers=walkers)
-    return time
+    return trace
 end
 
 @everywhere function alg_name_to_algorithm(name)
@@ -44,11 +60,9 @@ end
 end
 
 @everywhere function do_parallelism(npoints, parsed_args)
-    
-    params = SuperFit.generate_random_params()
-    
-    output="../../stored_models/sim_" * string(npoints) * ".jls"
-    timing_file="../../stored_times/sim_" * string(npoints) * ".txt"
+    println(npoints)
+    output=joinpath(parsed_args["output_dir"], "sim_" * string(npoints))
+    timing_file=joinpath(parsed_args["timing_dir"], "sim_" * string(npoints) * ".txt")
     open(timing_file, "w+") do tf
         write(tf, "")
     end
@@ -57,13 +71,14 @@ end
         write(tf, "\nFraction uncertainty: " * string(parsed_args["sigma"]))
         write(tf, "\n\nRuntimes:\n")
     end
-    runtimes = zeros()
+    runtimes = Vector{Float64}()
     for i in 1:parsed_args["nsimulations"]
-        runtime = generate_and_fit_lightcurve(
+        output_path = output * "_" * string(i) * ".jls"
+        runtime = @elapsed generate_and_fit_lightcurve(
             npoints,
             parsed_args["sigma"],
-            output,
-            params=params,
+            output_path,
+            params=SuperFit.generate_random_params(),
             force=parsed_args["force"],
             algorithm=alg_name_to_algorithm(parsed_args["algorithm"]),
             iterations=parsed_args["iterations"],
@@ -72,7 +87,7 @@ end
             write(tf, string(runtime))
             write(tf, "\n")
         end
-        append!(runtimes, runtime)
+        push!(runtimes, runtime)
     end
     open(timing_file, "a+") do tf
         write(tf, "\nMedian of runtimes:\n" * string(median(runtimes)))
@@ -92,12 +107,12 @@ end
             required = true
             arg_type = Float64
             action = :store_arg
-        "--output_file"
+        "--output_dir"
             help = "Where to store trace output"
             required = true
             arg_type = String
             action = :store_arg
-        "--timing_file"
+        "--timing_dir"
             help = "Where to store time analysis"
             required = true
             arg_type = String
@@ -196,17 +211,13 @@ end
     parsed_args = parse_args(ARGS, s)
     println(parsed_args)
     
-    machinefilename = ENV["PBS_NODEFILE"]
-    machinespecs = readlines( machinefilename )
-    threads_per_process = 2
-    num_processors = length(machinespecs[1:threads_per_process:end]) - 1
-    addprocs(num_processors, exeflags="-t 2")
     println("Number of workers: " * string(nworkers()))
     println("Number of threads: " * string(Threads.nthreads()))
     println("Number of procs: " * string(nprocs()))
-    npoint_arr = 10:10:100
+    npoint_arr = collect(10:10:100)
     println(npoint_arr)
-    pmap(x -> do_parallelism(x, parsed_args), collect(npoint_arr))
+    total_time = @elapsed @sync pmap(x -> do_parallelism(x, parsed_args), npoint_arr)
+    println(total_time)
 end
 
 main()

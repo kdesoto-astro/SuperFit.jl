@@ -1,0 +1,113 @@
+Starting job SuperFitSimLC
+Tue Dec  7 22:27:46 EST 2021
+Job id: 32655504.torque01.util.production.int.aci.ics.psu.edu
+Nodefile: /var/spool/torque/aux//32655504.torque01.util.production.int.aci.ics.psu.edu
+Was assigned the following nodes
+comp-gc-0085
+comp-gc-0085
+comp-gc-0085
+comp-gc-0085
+Loading modules to provide Julia 1.6.0
+About to change into /storage/work/k/kmd6851/SuperFit/benchmarks
+About to start Julia specifying list of assigned nodes
+  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+ERROR: LoadError: On worker 2:
+MethodError: no method matching append!(::Array{Float64, 0}, ::Float64)
+Closest candidates are:
+  append!(!Matched::SentinelArrays.ChainedVector{T, A} where A<:AbstractVector{T}, ::Any) where T at /storage/home/kmd6851/.julia/packages/SentinelArrays/iHRpO/src/chainedvector.jl:607
+  append!(!Matched::DataStructures.MutableLinkedList, ::Any...) at /storage/home/kmd6851/.julia/packages/DataStructures/nBjdy/src/mutable_list.jl:160
+  append!(!Matched::StructArrays.StructVector{T, C, I} where {T, C<:Union{Tuple, NamedTuple}, I}, ::Any) at /storage/home/kmd6851/.julia/packages/StructArrays/MdA9B/src/tables.jl:24
+  ...
+Stacktrace:
+ [1] do_parallelism
+   @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:90
+ [2] #10
+   @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:219
+ [3] #106
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:278
+ [4] run_work_thunk
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:63
+ [5] macro expansion
+   @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/process_messages.jl:278 [inlined]
+ [6] #105
+   @ ./task.jl:406
+Stacktrace:
+  [1] (::Base.var"#837#839")(x::Task)
+    @ Base ./asyncmap.jl:177
+  [2] foreach(f::Base.var"#837#839", itr::Vector{Any})
+    @ Base ./abstractarray.jl:2141
+  [3] maptwice(wrapped_f::Function, chnl::Channel{Any}, worker_tasks::Vector{Any}, c::Vector{Int64})
+    @ Base ./asyncmap.jl:177
+  [4] wrap_n_exec_twice
+    @ ./asyncmap.jl:153 [inlined]
+  [5] #async_usemap#822
+    @ ./asyncmap.jl:103 [inlined]
+  [6] #asyncmap#821
+    @ ./asyncmap.jl:81 [inlined]
+  [7] pmap(f::Function, p::WorkerPool, c::Vector{Int64}; distributed::Bool, batch_size::Int64, on_error::Nothing, retry_delays::Vector{Any}, retry_check::Nothing)
+    @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:126
+  [8] pmap(f::Function, p::WorkerPool, c::Vector{Int64})
+    @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:101
+  [9] pmap(f::Function, c::Vector{Int64}; kwargs::Base.Iterators.Pairs{Union{}, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+    @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:156
+ [10] pmap
+    @ /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/pmap.jl:156 [inlined]
+ [11] main()
+    @ Main /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:219
+ [12] top-level scope
+    @ /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:222
+in expression starting at /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes.jl:222
+┌ Warning: Forcibly interrupting busy workers
+│   exception = rmprocs: pids [3] not terminated after 5.0 seconds.
+└ @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/cluster.jl:1242
+┌ Warning: rmprocs: process 1 not removed
+└ @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/cluster.jl:1038
+Number of workers before: 1
+Number of threads before: 1
+Number of procs before: 1
+      From worker 2:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 3:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+Dict{String, Any}("gamma_1" => nothing, "tau_fall" => nothing, "walkers" => 6, "output_dir" => "../../stored_models", "amplitude" => nothing, "timing_dir" => "../../stored_times", "tau_rise" => nothing, "sigma" => 0.1, "nsimulations" => 7, "force" => true, "gamma_switch" => nothing, "gamma_2" => nothing, "iterations" => 5000, "algorithm" => "NUTS", "beta" => nothing, "npoints" => 100, "t_0" => nothing)
+Number of workers: 2
+Number of threads: 1
+Number of procs: 3
+[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+      From worker 2:	10
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	2
+      From worker 3:	20
+      From worker 3:	20
+      From worker 2:	[34.81256419291077, 0.01, 5.00134710080458, 60.000000125625625, 0.3997098207310728, 59238.09978374638, 26.160768666769417, 167.51824537861503, 0.001]
+      From worker 3:	SETTING UP MODEL
+      From worker 2:	[34.81256419291077, 0.01, 5.00134710080458, 60.000000125625625, 0.3997098207310728, 59238.09978374638, 26.160768666769417, 167.51824537861503, 0.001]
+      From worker 2:	init Any[7.967846105477882, 0.01, 8.452886541706395, 68.60516401473909, 0.0, 59205.59054108583, 0.01, 135.0525793207623, 0.0]
+      From worker 2:	init Any[55.24312309726794, 0.0, 6.9165097763123375, 59.55426092043396, 0.0, 59260.44047827622, 1.7476035290970025, 139.93950099173026, 0.0]
+      From worker 2:	[34.81256419291077, 0.01, 5.00134710080458, 60.000000125625625, 0.3997098207310728, 59238.09978374638, 26.160768666769417, 167.51824537861503, 0.001]
+      From worker 2:	[34.81256419291077, 0.01, 5.00134710080458, 60.000000125625625, 0.3997098207310728, 59238.09978374638, 26.160768666769417, 167.51824537861503, 0.001]
+      From worker 2:	init Any[53.88861574444072, 0.01, 4.712658994095776, 55.88613020306803, 0.0, 59272.72231471819, 50.0, 161.2585612100512, 0.0]
+      From worker 2:	init Any[31.046795659377914, 0.0, 5.085054625821238, 61.73386377267289, 1.0, 59166.22164874705, 29.501834644362038, 192.8421234483026, 0.004459516082912756]
+      From worker 2:	[34.81256419291077, 0.01, 5.00134710080458, 60.000000125625625, 0.3997098207310728, 59238.09978374638, 26.160768666769417, 167.51824537861503, 0.001]
+      From worker 2:	init Any[1.0, 0.0, 7.452176433676862, 66.57973227761673, 0.0, 59186.72592166417, 0.01, 200.9693093690461, 0.010236142207064529]
+      From worker 2:	[34.81256419291077, 0.01, 5.00134710080458, 60.000000125625625, 0.3997098207310728, 59238.09978374638, 26.160768666769417, 167.51824537861503, 0.001]
+      From worker 2:	init Any[1.0, 0.01, 9.311421935032904, 67.93223550500748, 1.0, 59245.2409145206, 50.0, 130.61463474749232, 0.0016926391550020478]
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	2
+      From worker 3:	[207.80694520014734, 0.005431082252830915, 5.000000002092343, 59.99999999976124, 0.07051201100658135, 58281.09525629266, 45.99080309596817, 299.9999999977974, 3.078915149652583]
+      From worker 3:	[207.80694520014734, 0.005431082252830915, 5.000000002092343, 59.99999999976124, 0.07051201100658135, 58281.09525629266, 45.99080309596817, 299.9999999977974, 3.078915149652583]
+      From worker 3:	init Any[5.581096135691622e6, 0.0, 18.93477108687221, 57.94528077322721, 0.0, 938499.563775645, 0.01, 149.27268229932545, 2.585016518663946]
+      From worker 3:	init Any[678709.4246716156, 0.0, 15.341406784108113, 69.35283041629913, 1.0, 0.0, 50.0, 284.00017871555985, 2.121068797039814]
+      From worker 2:	5000[1.037081433834749, 0.9999249484072362, 1.0001876088409896, 1.000271848161418, 1.0000748206368346, 1.0554568862060116, 1.000552478885416, 1.0048411727991127, 1.0035358106751942]
+      From worker 3:	[207.80694520014734, 0.005431082252830915, 5.000000002092343, 59.99999999976124, 0.07051201100658135, 58281.09525629266, 45.99080309596817, 299.9999999977974, 3.078915149652583]
+      From worker 3:	init Any[1.0, 0.0, 0.0, 67.90323144430248, 0.0, 0.0, 50.0, 242.76652858860314, 5.203946883406354]
+      From worker 2:	10000[1.0178000630654522, 0.9999679037836162, 1.0000842199200095, 1.0002858241671266, 1.0000949913351904, 1.0257128308733898, 1.000308571182187, 1.0013981662695082, 1.0012461317412844]
+      From worker 3:	[207.80694520014734, 0.005431082252830915, 5.000000002092343, 59.99999999976124, 0.07051201100658135, 58281.09525629266, 45.99080309596817, 299.9999999977974, 3.078915149652583]
+      From worker 3:	init Any[1.0, 0.01, 8.250489638963103, 58.257866780119286, 0.0, 0.0, 50.0, 241.04956463797535, 5.607723651256413]
+      From worker 3:	[207.80694520014734, 0.005431082252830915, 5.000000002092343, 59.99999999976124, 0.07051201100658135, 58281.09525629266, 45.99080309596817, 299.9999999977974, 3.078915149652583]
+      From worker 3:	init Any[2.7238193460893705e6, 0.0, 21.375849084325182, 53.163792383398494, 1.0, 0.0, 50.0, 159.5005494041754, 0.0]
+      From worker 3:	[207.80694520014734, 0.005431082252830915, 5.000000002092343, 59.99999999976124, 0.07051201100658135, 58281.09525629266, 45.99080309596817, 299.9999999977974, 3.078915149652583]
+      From worker 3:	init Any[617811.0403455534, 0.0, 12.597871365264165, 55.80391616807335, 1.0, 0.0, 0.01, 225.14044634150707, 0.0]
+      From worker 3:	5000[1.0985582466060981, 1.0002511646401229, 1.000525800073691, 1.0004181820831892, 1.0007095351678894, 1.1334582161523057, 1.0050612554579377, 1.0054094797467543, 1.1114214023570563]
+Julia exited
+Tue Dec  7 22:33:20 EST 2021

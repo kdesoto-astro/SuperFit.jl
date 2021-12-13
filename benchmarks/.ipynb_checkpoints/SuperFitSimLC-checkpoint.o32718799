@@ -1,0 +1,54 @@
+Starting job SuperFitSimLC
+Thu Dec  9 12:53:52 EST 2021
+Job id: 32718799.torque01.util.production.int.aci.ics.psu.edu
+Nodefile: /var/spool/torque/aux//32718799.torque01.util.production.int.aci.ics.psu.edu
+Was assigned the following nodes
+comp-bc-0381
+comp-bc-0381
+comp-bc-0381
+comp-bc-0381
+comp-bc-0381
+Loading modules to provide Julia 1.6.0
+About to change into /storage/work/k/kmd6851/SuperFit/benchmarks
+About to start Julia specifying list of assigned nodes
+Warning: Permanently added 'comp-bc-0381' (ECDSA) to the list of known hosts.
+
+signal (15): Terminated
+in expression starting at /storage/work/k/kmd6851/SuperFit/benchmarks/benchmark_runtimes_single.jl:224
+subtype_ccheck at /buildworker/worker/package_linux64/build/src/subtype.c:526
+var_gt at /buildworker/worker/package_linux64/build/src/subtype.c:623
+subtype at /buildworker/worker/package_linux64/build/src/subtype.c:1259
+forall_exists_equal at /buildworker/worker/package_linux64/build/src/subtype.c:1402
+subtype at /buildworker/worker/package_linux64/build/src/subtype.c:1337
+with_tvar at /buildworker/worker/package_linux64/build/src/subtype.c:714
+subtype_unionall at /buildworker/worker/package_linux64/build/src/subtype.c:839 [inlined]
+subtype at /buildworker/worker/package_linux64/build/src/subtype.c:1282
+with_tvar at /buildworker/worker/package_linux64/build/src/subtype.c:714
+subtype_unionall at /buildworker/worker/package_linux64/build/src/subtype.c:839 [inlined]
+subtype at /buildworker/worker/package_linux64/build/src/subtype.c:1282
+with_tvar at /buildworker/worker/package_linux64/build/src/subtype.c:714
+subtype_unionall at /buildworker/worker/package_linux64/build/src/subtype.c:839 [inlined]
+subtype at /buildworker/worker/package_linux64/build/src/subtype.c:1282
+with_tvar at /buildworker/worker/package_linux64/build/src/subtype.c:714
+subtype_unionall at /buildworker/worker/package_linux64/build/src/subtype.c:839 [inlined]
+subtype at /buildworker/worker/package_linux64/build/src/subtype.c:1282
+with_tvar at /buildworker/worker/package_linux64/build/src/subtype.c:745
+subtype_unionall at /buildworker/worker/package_linux64/build/src/subtype.c:839 [inlined]
+subtype at /buildworker/worker/package_linux64/build/src/subtype.c:1282
+with_tvar at /buildworker/worker/package_linux64/build/src/subtype.c:745
+subtype_unionall at /buildworker/worker/package_linux64/build/src/subtype.c:839 [inlined]
+subtype at /buildworker/worker/package_linux64/build/src/subtype.c:1282
+with_tvar at /buildworker/worker/package_linux64/build/src/subtype.c:745
+subtype_unionall at /buildworker/worker/package_linux64/build/src/subtype.c:839 [inlined]
+subtype at /buildworker/worker/package_linux64/build/src/subtype.c:1282
+exists_subtype at /buildworker/worker/package_linux64/build/src/subtype.c:1426 [inlined]
+forall_exists_subtype at /buildworker/worker/package_linux64/build/src/subtype.c:1454
+jl_subtype_env at /buildworker/worker/package_linux64/build/src/subtype.c:1888
+intersect at /buildworker/worker/package_linux64/build/src/subtype.c:3022
+intersect_tuple at /buildworker/worker/package_linux64/build/src/subtype.c:2717 [inlined]
+intersect at /buildworker/worker/package_linux64/build/src/subtype.c:3085
+intersect_all at /buildworker/worker/package_linux64/build/src/subtype.c:3166
+jl_type_intersection_env_s at /buildworker/worker/package_linux64/build/src/subtype.c:3412
+jl_type_intersection2 at /buildworker/worker/package_linux64/build/src/gf.c:1590 [inlined]
+ml_matches at /buildworker/worker/package_linux64/build/src/gf.c:2950
+jl_matching_methods at /buildworker/worker/package_linux64/build/src/gf.c:1885

@@ -10,7 +10,11 @@ function generate_random_params()
     return (;A, beta, gamma_1, gamma_2, gamma_switch, t_0, tau_rise, tau_fall)
 end
 
-function generate_lightcurve_from_params(num_times, params, noise_frac; with_noise=true)
+function generate_lightcurve_from_params(num_times::Int64, params, noise_frac::Float64; with_noise=true)
+    
+    @assert num_times > 0 "Number of points for generated lightcurve must be > 0"
+    @assert !with_noise || noise_frac >= 0 "Noise fraction of generated lightcurve must be non-negative."
+    
     fluxes_w_noise = Array{Float64}(undef, num_times)
     times = Array{Float64}(undef, num_times)
     noise_arr = Array{Float64}(undef, num_times)
@@ -29,10 +33,16 @@ function generate_lightcurve_from_params(num_times, params, noise_frac; with_noi
         end
     end
     sort_idx = sortperm(times)
+    
+    #Post-conditions
+    @assert length(times) == num_times "Generated lightcurve not returning expected number of points"
+    @assert length(fluxes_w_noise) == num_times "Generated lightcurve not returning expected number of points"
+    @assert length(noise_arr) == num_times "Generated lightcurve not returning expected number of points"
+    
     return times[sort_idx], fluxes_w_noise[sort_idx], noise_arr[sort_idx]
 end
 
-function select_event_data(t::DataFrame, phase_min::Float64=PHASE_MIN, phase_max::Float64=PHASE_MAX, nsigma=missing)
+function select_event_data(t::DataFrame; phase_min::Float64=PHASE_MIN, phase_max::Float64=PHASE_MAX, nsigma=missing)
     """
     Select data only from the period containing the peak flux, with outliers cut.
     Parameters
@@ -48,6 +58,8 @@ function select_event_data(t::DataFrame, phase_min::Float64=PHASE_MIN, phase_max
     t_event : DataFrame
         Table containing the reduced light curve data from the period containing the peak flux.
     """
+    
+    @assert phase_min < phase_max "Phase min should be less than phase max"
     t_event = t
     #t_event = t[(t['PHASE'] >= phase_min) & (t['PHASE'] < phase_max)]
     #TODO: current pipeline assumes event already isolated in file, change this later
@@ -71,7 +83,11 @@ function read_light_curve(filename)
     """
     #TODO: this function will change when using DR7 FITS file format, or LSST file formats
     println(filename)
-    df = CSV.read(filename, DataFrame, delim=" ")
+    try
+        df = CSV.read(filename, DataFrame, delim=" ")
+    catch
+        throw(LoadError("File does not exist"))
+    end
     println(df)
     return df
 end
@@ -100,7 +116,8 @@ function median_absolute_deviation(mags)
     Calculates the mean absolute deviation:
     MAD = Median(abs(mag - avg mag))
     """
-    return Base.median(abs.(mags .- mean(mags)))
+    @assert length(mags) > 0 "mags array empty"
+    return median(abs.(mags .- mean(mags)))
 end
 
 function convert_mags_to_flux(obs, zp)
