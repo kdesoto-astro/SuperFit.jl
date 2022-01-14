@@ -1,15 +1,18 @@
+using Pkg
+Pkg.activate("..")
 using SuperFit
 using Turing, MCMCChains
 using StatsPlots
 using CSV, DataFrames
 
 function save_traces(ztf_name::String, filter_band::String)
-    stored_model_dir = "../stored_models"
-    tracepath = joinpath(stored_model_dir, string(ztf_name,"_1",filter_band))
+    #stored_model_dir = "../stored_models"
+    #tracepath = joinpath(stored_model_dir, string(ztf_name,"_1",filter_band))
+    tracepath = ztf_name
     ENV["GKSwstype"] = "100"
     println("entered function")
     trace = read(tracepath, Chains)
-    CSV.write("full_file.csv", DataFrame(trace))
+    #CSV.write("full_file.csv", DataFrame(trace))
     println("loaded in trace")
     println(DataFrame(summarystats(trace)))
     plot_all_traces(trace, ztf_name, filter_band)
@@ -23,7 +26,8 @@ function plot_all_traces(trace, ztf_name, filter_band)
             xlabel = "Iterations",
             ylabel = "Value"
         )
-        savefig(plt, string("trace_",ztf_name,"_",filter_band,"_",param_idx,".png"))
+        #savefig(plt, string("trace_",ztf_name,"_",filter_band,"_",param_idx,".png"))
+        savefig(plt, string("wonky_trace", param_idx, ".png"))
     end
 end
 
@@ -55,23 +59,10 @@ function show_summary_stats(filename::String)
     return sumstats
 end
 
-function flux_map(t, A, beta, gamma_1, gamma_2, gamma_switch, t_0, tau_rise, tau_fall, extra_sigma)
-    gamma = gamma_1
-    if gamma_switch > 0.6666
-        gamma = gamma_2
-    end
-    phase = t - t_0
-    f = A / (1. + exp(-phase / tau_rise)) * (1. - beta * gamma) * exp((gamma - phase) / tau_fall)
-    if phase < gamma
-        f = A / (1. + exp(-phase / tau_rise)) * (1. - beta * phase)
-    end
-    return -2.5*log10(f) + 22.
-end
-
 function plot_fits(ztf_name::String, filter_band::String)
     ENV["GKSwstype"] = "100"
-    all_lightcurve_data = "../ztf_data/filtered_data_20"
-    stored_model_dir = "../stored_models"
+    all_lightcurve_data = "../../project-kdesoto-psu/ztf_data/test_set_20"
+    stored_model_dir = "../scripts"
     
     ztf_filepath = joinpath(all_lightcurve_data, string(ztf_name,".txt"))
     println(ztf_filepath)
@@ -85,16 +76,20 @@ function plot_fits(ztf_name::String, filter_band::String)
     times = entries.ZTF_MJD
     #p1 = plot(r_entries.ZTF_MJD, r_entries.ZTF_PSF, seriestype = :scatter, yflip=true, color=1)
     #p2 = plot(g_entries.ZTF_MJD, g_entries.ZTF_PSF, seriestype = :scatter, yflip=true, color=2)
-    tracepath = joinpath(stored_model_dir, string(ztf_name,"_1",filter_band))
+    tracepath = joinpath(stored_model_dir, string(ztf_name,"_",filter_band,".jls"))
     println(tracepath)
     trace = MCMCChains.read(tracepath, Chains)
     num_chains = length(trace[1, :A, :])
     println(num_chains)
     all_fluxes = Array{Vector{Float64}}(undef, num_chains)
     for i in 1:num_chains
-        single_chain = median(Array(trace[:,:,i]), dims=1)
+        A, beta, gamma, t_0, tau_rise, tau_fall, extra_sigma = median(Array(trace[:,:,i]), dims=1)
+        single_chain = (;A, beta, gamma, t_0, tau_rise, tau_fall, extra_sigma)
         println(single_chain)
-        model_flux = [flux_map(t, single_chain...) for t in times]
+        model_flux = Vector{Float64}()
+        for t in times
+            push!(model_flux,  -2.5*log10(SuperFit.flux_map(t, single_chain)) + 22.)
+        end
         all_fluxes[i] = model_flux
     end
     plot(times, all_fluxes, yflip=true)
@@ -110,4 +105,4 @@ function all_diagnostics(ztf_name::String)
     end
 end
 
-save_marginals("simulated_10", "r")
+plot_fits("ZTF18acqrgkv", "g")

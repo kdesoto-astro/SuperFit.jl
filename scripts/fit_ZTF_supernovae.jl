@@ -1,30 +1,46 @@
-using SuperFit
+import Pkg
+Pkg.activate("..")
+Pkg.instantiate()
+Pkg.precompile()
+
 using Distributed
-using CSV, DataFrames
-using Turing, MCMCChains
-using Plots, DataFrames
-using LinearAlgebra, PDMats
-using Distributions
-using Random
-using Formatting, ArgParse
-using Optim
-import AbstractMCMC
-import StatsBase
 
-const PHASE_MIN = 58058.
-const PHASE_MAX = 59528.
-const ITERATIONS = 5000
-const WALKERS = 6
-const FILTERS = ["r", "g"]
-const ZEROPOINT_MAG = 22.
 
-function mcmc_multithread(light_curve,
-        outfile,
-        filters=FILTERS,
-        force::Bool=False,
-        do_diagnostics::Bool=True,
-        iterations::Int64=ITERATIONS,
-        walkers::Int64=WALKERS)
+machinefilename = ENV["PBS_NODEFILE"]
+println(ENV["PBS_NUM_NODES"])
+println(ENV["PBS_NUM_PPN"])
+machinespecs = readlines( machinefilename )
+threads_per_process = parse(Int64, ENV["PBS_NUM_PPN"])
+addprocs(machinespecs[1:threads_per_process:end], exeflags="-t " * string(threads_per_process))
+
+@everywhere import Pkg
+@everywhere Pkg.UPDATED_REGISTRY_THIS_SESSION[] = true 
+@everywhere Pkg.activate("..")
+@everywhere using Dates
+println(string("beginning imports", now()))
+@everywhere using SuperFit
+@everywhere import Turing
+@everywhere using Formatting, ArgParse
+println(string("finished importing packages", now()))
+
+println("Number of workers: " * string(nworkers()))
+println("Number of threads: " * string(Threads.nthreads()))
+println("Number of procs: " * string(nprocs()))
+open("/proc/$(getpid())/statm") do io
+    println("Current pmem: " * split(read(io, String))[1])
+end
+
+@everywhere function alg_name_to_algorithm(name)
+    if name == "NUTS"
+        return Turing.NUTS()
+    elseif name == "MH"
+        return Turing.MH()
+    else
+        throw(ArgumentError("Sampling algorithm not supported. Please enter 'NUTS' or 'MH'"))
+    end
+end
+
+@everywhere function mcmc_parallel(filename, parsed_args)
     """
     Fit the model to the observed light curve. Then combine the posteriors for each filter and use that as the new prior
     for a second iteration of fitting.
@@ -52,25 +68,55 @@ function mcmc_multithread(light_curve,
     parameters : list
         List of Theano variables in the PyMC3 model.
     """
+    println(string("into helper function", now()))
     println("STARTING PIPELINE")
+    basename = split(Base.Filesystem.basename(filename), ".")[1]
+    outfile = joinpath(parsed_args["output-dir"], string(basename, "{}", ".jls"))
+    light_curve = SuperFit.read_light_curve(filename)
+    println(string("read lightcurve", now()))
+    #if args.zmin is not None and light_curve.meta['REDSHIFT'] <= args.zmin:
+    #    raise ValueError(f'Skipping file with redshift {light_curve.meta["REDSHIFT"]}: {filename}')
     t = SuperFit.select_event_data(light_curve)
-    traces = Dict()
+    #println(string("select event data", now()))
+    #traces = Dict()
+    filters = parsed_args["filters"]
+    algorithm = alg_name_to_algorithm(parsed_args["algorithm"])
+    iterations = parsed_args["iterations"]
+    walkers = parsed_args["walkers"]
     #TODO: have better filter list checl
     for fltr in filters
+        println(string("entered filter loop", now()))
         println(format("STARTING FILTER {}", fltr))
         obs_mags = filter(row -> row.ZTF_filter == fltr, t)
-        obs_time, obs_flux, obs_unc = SuperFit.convert_mags_to_flux(obs_mags, ZEROPOINT_MAG)
+        obs_time, obs_flux, obs_unc = SuperFit.convert_mags_to_flux(obs_mags, SuperFit.ZEROPOINT_MAG)
+        println(string("converted mags to flux", now()))
         model = SuperFit.setup_model(obs_time, obs_flux, obs_unc)
-        outfile = format(outfile, string("_",  fltr))
-        algorithm = NUTS()
-        trace = SuperFit.sample_or_load_trace(model, outfile, force=force, algorithm=algorithm, iterations=iterations, walkers=walkers)
-        traces[fltr] = trace
+        println(string("setup model", now()))
+        outfile_fltr = format(outfile, string("_",  fltr))
+        converged = SuperFit.sample_or_load_trace(
+            model,
+            outfile_fltr,
+            force=parsed_args["force"],
+            algorithm=algorithm,
+            iterations=iterations,
+            walkers=walkers,
+            min_iters=parsed_args["min-iters"],
+            max_iters=parsed_args["max-iters"]
+        )
+        if !converged
+            cp(filename, 
+                joinpath(parsed_args["unconverged-dir"], string(basename, ".jls")),
+                force=true
+            )
+        end
+        #println(string("finished sampling", now()))
+        #traces[fltr] = trace
         """
         if do_diagnostics:
             diagnostics(obs, trace1, parameters1, outfile1)
-        """
         if do_diagnostics
         end
+        """
     end
 
     """
@@ -79,7 +125,7 @@ function mcmc_multithread(light_curve,
         plot_priors(x_priors, y_priors, old_posteriors, parameters1, outfile.format('_priors.pdf'))
     """
     
-    return traces
+    #return traces
     #return traces1, traces2, parameters2
 end
 
@@ -94,17 +140,32 @@ function main()
         "--filters"
             help = "Subset of filters to fit"
             arg_type = Vector{String}
-            default = FILTERS
+            default = SuperFit.FILTERS
             action = :store_arg
         "--iterations"
             help = "Number of steps after burn-in"
             arg_type = Int64
-            default = ITERATIONS
+            default = SuperFit.ITERATIONS
             action = :store_arg
         "--walkers"
             help = "Number of walkers"
             arg_type = Int64
-            default = WALKERS
+            default = SuperFit.WALKERS
+            action = :store_arg
+        "--unconverged-dir"
+            help = "Where unconverged lightcurves are copied to"
+            arg_type = String
+            default = "unconverged"
+            action = :store_arg
+        "--min-iters"
+            help = "Minimum iterations for convergence"
+            arg_type = Int64
+            default = 5000
+            action = :store_arg
+        "--max-iters"
+            help = "Maximum iterations for convergence"
+            arg_type = Int64
+            default = 50000
             action = :store_arg
         "--output-dir"
             help="Path in which to save the trace data"
@@ -121,23 +182,24 @@ function main()
             action = :store_false
             dest_name = "plots"
             help = "Don't save the diagnostic plots"
+        "--algorithm"
+            help="Sampling algorithm to use. Options currently supported are 'NUTS' or 'MH'.
+                See Turing.jl documentation for more information."
+            nargs = '?'
+            arg_type = String
+            default = "NUTS"
+            action = :store_arg
     end
     parsed_args = parse_args(ARGS, s)
+    #println(string("parsed args", now()))
     #pdf = PdfPages('lc_fits.pdf', keep_empty=False)
-    for filename in parsed_args["filenames"]
-        basename = split(Base.Filesystem.basename(filename), ".")[1]
-        outfile = joinpath(parsed_args["output-dir"], string(basename, "{}", ".jls"))
-        light_curve = SuperFit.read_light_curve(filename)
-        #if args.zmin is not None and light_curve.meta['REDSHIFT'] <= args.zmin:
-        #    raise ValueError(f'Skipping file with redshift {light_curve.meta["REDSHIFT"]}: {filename}')
-        traces = mcmc_multithread(light_curve,
-            outfile,
-            parsed_args["filters"],
-            parsed_args["force"],
-            parsed_args["plots"],
-            parsed_args["iterations"],
-            parsed_args["walkers"])
+    runtime = @elapsed @sync pmap(x -> mcmc_parallel(x, parsed_args), parsed_args["filenames"])
+    println(runtime)
+    timing_file = "multinode_timing_comparisons.txt"
+    open(timing_file, "a+") do tf
+        write(tf, string(ENV["PBS_NUM_NODES"],",",ENV["PBS_NUM_PPN"],",",runtime,"\n") )
     end
+        
     """
     if args.plots:
     fig = plot_final_fits(light_curve, traces1, traces2, parameters, outfile.format('.pdf'))

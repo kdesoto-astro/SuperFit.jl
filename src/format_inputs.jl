@@ -83,12 +83,7 @@ function read_light_curve(filename)
     """
     #TODO: this function will change when using DR7 FITS file format, or LSST file formats
     println(filename)
-    try
-        df = CSV.read(filename, DataFrame, delim=" ")
-    catch
-        throw(LoadError("File does not exist"))
-    end
-    println(df)
+    df = CSV.read(filename, DataFrame, delim=" ")
     return df
 end
 

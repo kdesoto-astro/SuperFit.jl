@@ -17,6 +17,7 @@ using Suppressor
 using AbstractMCMC: AbstractModel
 import StatsBase
 using Logging
+using Dates
 
 include("defaults.jl")
 include("loguniform.jl")
