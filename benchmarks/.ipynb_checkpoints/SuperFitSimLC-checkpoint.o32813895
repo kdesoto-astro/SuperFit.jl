@@ -1,0 +1,799 @@
+Starting job SuperFitSimLC
+Sun Dec 12 16:09:46 EST 2021
+Job id: 32813895.torque01.util.production.int.aci.ics.psu.edu
+Nodefile: /var/spool/torque/aux//32813895.torque01.util.production.int.aci.ics.psu.edu
+Was assigned the following nodes
+comp-bc-0370
+comp-bc-0369
+comp-bc-0369
+comp-bc-0369
+comp-bc-0368
+comp-bc-0366
+comp-bc-0366
+comp-bc-0366
+comp-bc-0366
+Loading modules to provide Julia 1.6.0
+About to change into /storage/work/k/kmd6851/SuperFit/benchmarks
+About to start Julia specifying list of assigned nodes
+Warning: Permanently added 'comp-bc-0366' (ECDSA) to the list of known hosts.
+  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+Number of workers before: 1
+Number of threads before: 1
+Number of procs before: 1
+      From worker 3:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 2:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 4:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 5:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 7:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 8:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 6:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 10:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+      From worker 9:	  Activating environment at `/storage/work/k/kmd6851/SuperFit/Project.toml`
+Dict{String, Any}("gamma_1" => nothing, "tau_fall" => nothing, "walkers" => 6, "output_dir" => "../../stored_models/9_nodes_sm", "amplitude" => nothing, "timing_dir" => "../../stored_times/9_nodes_sm", "tau_rise" => nothing, "sigma" => 0.1, "nsimulations" => 25, "force" => true, "gamma_switch" => nothing, "gamma_2" => nothing, "iterations" => 5000, "algorithm" => "NUTS", "beta" => nothing, "npoints" => 20, "t_0" => nothing)
+Number of workers: 9
+Number of threads: 1
+Number of procs: 10
+[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+      From worker 3:	20
+      From worker 2:	10
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 4:	30
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 5:	70
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 9:	80
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 7:	60
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 9:	SETTING UP MODEL
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 10:	SETTING UP MODEL
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 10:	SETTING UP MODEL
+      From worker 6:	SETTING UP MODEL
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 6:	50
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 6:	SETTING UP MODEL
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 10:	SETTING UP MODEL
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 6:	SETTING UP MODEL
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 10:	SETTING UP MODEL
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 10:	SETTING UP MODEL
+      From worker 8:	40
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 8:	SETTING UP MODEL
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 7:	SETTING UP MODEL
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 7:	SETTING UP MODEL
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 2:	10
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 9:	80
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 9:	SETTING UP MODEL
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 3:	20
+      From worker 3:	SETTING UP MODEL
+      From worker 3:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 7:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 6:	50
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 6:	SETTING UP MODEL
+      From worker 6:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 9:	80
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 9:	SETTING UP MODEL
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 8:	40
+      From worker 8:	SETTING UP MODEL
+      From worker 8:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 9:	SETTING UP MODEL
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 7:	SETTING UP MODEL
+      From worker 5:	70
+      From worker 5:	SETTING UP MODEL
+      From worker 5:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 9:	80
+      From worker 9:	SETTING UP MODEL
+      From worker 9:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 4:	30
+      From worker 4:	SETTING UP MODEL
+      From worker 4:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 2:	100
+      From worker 2:	SETTING UP MODEL
+      From worker 2:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 10:	90
+      From worker 10:	SETTING UP MODEL
+      From worker 10:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+      From worker 7:	60
+      From worker 7:	SETTING UP MODEL
+      From worker 7:	SAMPLING AND LOADING TRACE
+32030.227352998
+Julia exited
+Mon Dec 13 01:07:19 EST 2021

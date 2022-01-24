@@ -1,27 +1,27 @@
-function check_rhat(traces, rhat_plot_arr)
+function check_rhat(samples, rhat_plot_arr)
     
-    @assert length(traces) > 1 "Gelman-Rubin diagnostic only works for > 1 chains."
-    
-    min_iteration = 10000
-    max_iteration = 100000
+    #@assert length(traces) > 1 "Gelman-Rubin diagnostic only works for > 1 chains."
+
     rhat_threshold = 1.05
     
-    samples = AbstractMCMC.chainsstack(traces)
+    #samples = AbstractMCMC.chainsstack(traces)
     iteration = range(samples)[end]
     
     @assert iteration > 0 "Cannot calculate summary statistics for empty traces."
     
     sumstats = DataFrame(summarystats(samples))
-    #println(iteration, sumstats.rhat)
+    println(iteration, sumstats.rhat, now())
     
     rhat_plot_arr = vcat(rhat_plot_arr, transpose(Array{Float64}(sumstats.rhat)))
     rhat_vec = sumstats.rhat
+    """
     if iteration > max_iteration
         return true
     end
     if iteration < min_iteration
         return false
     end
+    """
     for rhat in rhat_vec
         if ismissing(rhat) || rhat > rhat_threshold
             return false

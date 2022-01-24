@@ -1,9 +1,11 @@
-using Pkg
+import Pkg
 Pkg.activate("..")
+Pkg.instantiate()
 using SuperFit
 using Turing, MCMCChains
 using StatsPlots
 using CSV, DataFrames
+using Distributions
 
 function save_traces(ztf_name::String, filter_band::String)
     #stored_model_dir = "../stored_models"
@@ -105,4 +107,43 @@ function all_diagnostics(ztf_name::String)
     end
 end
 
-plot_fits("ZTF18acqrgkv", "g")
+function get_multiband_variation(ztf_folder::String, band1::String, band2::String)
+    ENV["GKSwstype"] = "100"
+    all_files = readdir(ztf_folder)
+    all_prefixes = Set([fn[:-4] for fn in all_files])
+    differences = Dict()
+    for prefix in all_prefixes
+        file1 = prefix * band1 * ".jls"
+        print(file1)
+        file2 = prefix * band2 * ".jls"
+        print(file2)
+        trace1 = MCMCChains.read(file1, Chains)
+        trace2 = MCMCChains.read(file2, Chains)
+        num_chains = length(trace1[1, :A, :])
+        for i in 1:num_chains
+            A, beta, gamma, t_0, tau_rise, tau_fall, extra_sigma = median(Array(trace1[-1000:,:,i]), dims=1)
+            single_chain_1 = (;A, beta, gamma, t_0, tau_rise, tau_fall, extra_sigma)
+            A, beta, gamma, t_0, tau_rise, tau_fall, extra_sigma = median(Array(trace2[-1000:,:,i]), dims=1)
+            single_chain_2 = (;A, beta, gamma, t_0, tau_rise, tau_fall, extra_sigma)
+            for param in keys(single_chain_1)
+                if param in differences
+                    differences[param].append(single_chain_2[param] - single_chain_1[param])
+                else
+                    differences[param] = [single_chain_2[param] - single_chain_1[param]]
+                end
+            end
+        end
+    end
+    for param in differences
+        hist = histogram(differences[param])
+        plt = plot(hist
+            xlabel = band2 * "-" * band1 * " difference"
+            ylabel = "Count"
+        )
+        savefig(plt, "multiband_variation_" * string(param) * ".png")
+    end
+    
+end
+
+get_multiband_variation("../../ZTF_fits", "r", "g")
+#plot_fits("ZTF18acqrgkv", "g")

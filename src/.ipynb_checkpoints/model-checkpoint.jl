@@ -2,9 +2,11 @@ function flux_map(t, params)
     
     #No assertions because the model will skip illegal parameter choices anyways
     #Don't want to interrupt or force/stop sampling by throwing in assertions
-    
+    """
     gamma = params.gamma_1 / ( 1. + exp(100. * (params.gamma_switch - 2. / 3.))) 
         + params.gamma_2 / ( 1. + exp(-100. * (params.gamma_switch - 2. / 3.)))
+    """
+    gamma = params.gamma
     phase = t - params.t_0
     if phase < gamma
         return params.A / (1. + exp(-phase / params.tau_rise)) * (1. - params.beta * phase)
@@ -37,14 +39,16 @@ function setup_model(obs_time, obs_flux, obs_unc; max_flux=missing)
     @model sn_model(t, f, sig) = begin
         A ~ prior_A(max_flux)
         beta ~ prior_beta
-        gamma_1 ~ prior_gamma1
-        gamma_2 ~ prior_gamma2
-        gamma_switch ~ prior_gammaswitch
+        gamma ~ prior_gamma
+        #gamma_1 ~ prior_gamma1
+        #gamma_2 ~ prior_gamma2
+        #gamma_switch ~ prior_gammaswitch
         t_0 ~ prior_t0
         tau_rise ~ prior_taurise
         tau_fall ~ prior_taufall
         extra_sigma ~ prior_extrasigma #can be a log normal
-        params = (;A, beta, gamma_1, gamma_2, gamma_switch, t_0, tau_rise, tau_fall)
+        #params = (;A, beta, gamma_1, gamma_2, gamma_switch, t_0, tau_rise, tau_fall)
+        params = (;A, beta, gamma, t_0, tau_rise, tau_fall)
         sig = [convert(eltype(beta), s) for s in sig]
         exp_flux = [convert(eltype(beta), flux_map(time, params)) 
             for time in t]
@@ -52,6 +56,7 @@ function setup_model(obs_time, obs_flux, obs_unc; max_flux=missing)
         f ~ MvNormal(exp_flux, sigma)
     end
     posterior = sn_model(obs_time, obs_flux, obs_unc)
+    println(string("create sn model", now()))
     #return posterior, parameters
     return posterior
 end
