@@ -12,4 +12,12 @@ prior_t0 = Uniform(PHASE_MIN, PHASE_MAX)
 prior_taurise = Uniform(0.01, 50.)
 prior_taufall = Uniform(1., 300.)
 prior_extrasigma = TruncatedNormal(0., 1., 0.001, Inf)
+
+prior_g_A = TruncatedNormal(1.027, 0.152, 0., Inf)
+prior_g_beta = TruncatedNormal(1.035, 0.161, 0., Inf)
+prior_g_gamma = TruncatedNormal(1.021, 0.278, 0., Inf)
+prior_g_t0 = TruncatedNormal(1.0, 0.000365, 0., Inf)
+prior_g_taurise = TruncatedNormal(0.953, 0.284, 0., Inf)
+prior_g_taufall = TruncatedNormal(0.522, 0.102, 0., Inf)
+prior_g_extrasigma = TruncatedNormal(0.895, 0.418, 0., Inf)
     

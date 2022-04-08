@@ -9,7 +9,6 @@ function choose_init_params(mle)
         try
             std_err = StatsBase.stderror(mle)[i]
             #std_err = sqrt(abs(StatsBase.informationmatrix(mle)[i]))
-            println(std_err)
             if std_err > 0
                 offsets[i] = 3*std_err #3 stddev away
             else
@@ -129,6 +128,7 @@ function sample_or_load_trace(model,
             converged = false
         end
         #trace = AbstractMCMC.chainsstack(traces)
+        println(length(trace[1,:,1]))
         write(trace_file, trace)
         #println(string("wrote to file", now()))
         CSV.write("rhat_arr.csv", DataFrame(rhat_plot_arr, :auto))

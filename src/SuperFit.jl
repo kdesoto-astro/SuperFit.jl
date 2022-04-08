@@ -5,7 +5,7 @@ module SuperFit
 using Distributed
 using CSV, DataFrames
 using Turing, MCMCChains
-using Plots
+using Plots, StatsPlots
 using LinearAlgebra, PDMats
 using Distributions
 import ForwardDiff

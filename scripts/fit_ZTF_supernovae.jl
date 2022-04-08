@@ -71,7 +71,7 @@ end
     println(string("into helper function", now()))
     println("STARTING PIPELINE")
     basename = split(Base.Filesystem.basename(filename), ".")[1]
-    outfile = joinpath(parsed_args["output-dir"], string(basename, "{}", ".jls"))
+    outfile = joinpath(parsed_args["output-dir"], string(basename, ".jls"))
     light_curve = SuperFit.read_light_curve(filename)
     println(string("read lightcurve", now()))
     #if args.zmin is not None and light_curve.meta['REDSHIFT'] <= args.zmin:
@@ -84,40 +84,41 @@ end
     iterations = parsed_args["iterations"]
     walkers = parsed_args["walkers"]
     #TODO: have better filter list checl
-    for fltr in filters
-        println(string("entered filter loop", now()))
-        println(format("STARTING FILTER {}", fltr))
-        obs_mags = filter(row -> row.ZTF_filter == fltr, t)
-        obs_time, obs_flux, obs_unc = SuperFit.convert_mags_to_flux(obs_mags, SuperFit.ZEROPOINT_MAG)
-        println(string("converted mags to flux", now()))
-        model = SuperFit.setup_model(obs_time, obs_flux, obs_unc)
-        println(string("setup model", now()))
-        outfile_fltr = format(outfile, string("_",  fltr))
-        converged = SuperFit.sample_or_load_trace(
-            model,
-            outfile_fltr,
-            force=parsed_args["force"],
-            algorithm=algorithm,
-            iterations=iterations,
-            walkers=walkers,
-            min_iters=parsed_args["min-iters"],
-            max_iters=parsed_args["max-iters"]
+    #for fltr in filters
+    #println(string("entered filter loop", now()))
+    #println(format("STARTING FILTER {}", fltr))
+    #obs_mags = filter(row -> row.ZTF_filter == fltr, t)
+    obs_mags = t
+    obs_time, obs_flux, obs_unc = SuperFit.convert_mags_to_flux(obs_mags, SuperFit.ZEROPOINT_MAG)
+    println(string("converted mags to flux", now()))
+    model = SuperFit.setup_model(obs_time, obs_flux, obs_unc)
+    println(string("setup model", now()))
+    #outfile_fltr = format(outfile, string("_",  fltr))
+    converged = SuperFit.sample_or_load_trace(
+        model,
+        outfile,
+        force=parsed_args["force"],
+        algorithm=algorithm,
+        iterations=iterations,
+        walkers=walkers,
+        min_iters=parsed_args["min-iters"],
+        max_iters=parsed_args["max-iters"]
+    )
+    if !converged
+        cp(filename, 
+            joinpath(parsed_args["unconverged-dir"], string(basename, ".jls")),
+            force=true
         )
-        if !converged
-            cp(filename, 
-                joinpath(parsed_args["unconverged-dir"], string(basename, ".jls")),
-                force=true
-            )
-        end
-        #println(string("finished sampling", now()))
-        #traces[fltr] = trace
-        """
-        if do_diagnostics:
-            diagnostics(obs, trace1, parameters1, outfile1)
-        if do_diagnostics
-        end
-        """
     end
+    #println(string("finished sampling", now()))
+    #traces[fltr] = trace
+    """
+    if do_diagnostics:
+        diagnostics(obs, trace1, parameters1, outfile1)
+    if do_diagnostics
+    end
+    """
+    #end
 
     """
     TODO: add diagnostics
